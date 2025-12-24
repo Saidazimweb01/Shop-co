@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Header from '../../components/Header/Header'
 import Hero from '../../components/Hero/Hero'
 import Footer from '../../components/Footer/Footer'
-import NewProducts from '../../components/newProducts/newProducts'
+import NewProducts from '../../components/newProducts/NewProducts'
 
 import Categories from '../../components/Categories/Categories'
 import Comments from '../../components/Comments/Comments'
