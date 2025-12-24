@@ -1,0 +1,80 @@
+import React, { useEffect, useRef, useState } from 'react'
+import "./Comments.css"
+import right from "../../assets/right.svg"
+import left from "../../assets/left.svg"
+import status from "../../assets/status.svg"
+import fiveStar from "../../assets/fiveStar.svg"
+import { jwtDecode } from 'jwt-decode'
+
+function Comments() {
+    const listRef = useRef(null)
+    const [products, setProducts] = useState([])
+
+    useEffect(() => {
+        fetch("https://shop-co-backend-1.onrender.com/api/products").then((res) => {
+            return res.json()
+        })
+
+            .then((data) => {
+                setProducts(data || [])
+                // console.log(data);
+
+            })
+    }, [])
+
+    const scrollRight = () => {
+        listRef.current.scrollBy({
+            left: 400,
+            behavior: "smooth",
+        })
+    }
+
+    const scrollLeft = () => {
+        listRef.current.scrollBy({
+            left: -400,
+            behavior: "smooth",
+        })
+    }
+
+  
+  
+
+    
+
+    return (
+        <>
+            <section className="comments">
+                <div className="container">
+                    <div className="comments__box">
+                        <h2 className='comments__title'>OUR HAPPY CUSTOMERS</h2>
+                        <div className="comments__manage">
+                            <button className='comments__left' onClick={scrollLeft}><img src={left} alt="" /></button>
+                            <button className='comments__right' onClick={scrollRight}><img src={right} alt="" /></button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <ul ref={listRef} className="comments__card">
+
+                    {
+                        products.map((el,) => (
+                            el.comments.map((c) => (
+                                <li key={c._id} className="comments__item">
+                                    <img src={fiveStar} alt="" />
+                                    <div className="comments__status__bar">
+                                        <h3 className='comments__name'>{c.user}</h3>
+                                        <img src={status} alt="" />
+                                    </div>
+                                    <p className='comments__info' >{c.comment}</p>
+                                </li>
+                            ))
+                        ))
+                    }
+                </ul>
+            </section >
+        </>
+    )
+}
+
+export default Comments

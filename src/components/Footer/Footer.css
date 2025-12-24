@@ -1,0 +1,41 @@
+.foot {
+    background-color: rgba(0, 0, 0, 1);
+    padding-top: 42px;
+    padding-bottom: 42px;
+}
+
+.foot__box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+
+
+@media(max-width:852px) {
+    .foot__box {
+        justify-content: center;
+        gap: 30px;
+    }
+}
+
+
+@media(max-width:768px) {
+    .foot__box img {
+        /* width: 100%; */
+        /* height: 100%; */
+    }
+}
+
+
+@media(max-width:513px) {
+    .foot__box img {
+        width: 30%;
+        height: 30%;
+
+        &:nth-child(2){
+            width: 20%;
+        }
+    }
+}

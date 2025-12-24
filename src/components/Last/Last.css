@@ -1,0 +1,397 @@
+.last {
+    padding-top: 140px;
+    margin-bottom: 86px;
+    background-color: rgba(240, 240, 240, 1);
+    padding-bottom: 82px;
+    position: relative;
+}
+
+.last {
+    position: relative;
+
+}
+
+.contact {
+    position: absolute;
+    top: -92px;
+    /* footer ustiga chiqib turadi */
+    left: 0;
+    width: 100%;
+    z-index: 11;
+}
+
+.last__inner {
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    margin-bottom: 50px;
+
+    & div:nth-child(1) {
+        max-width: 248px;
+        display: flex;
+        flex-direction: column;
+
+
+        & .last__info {
+            margin-top: 25px;
+            margin-bottom: 32px;
+
+        }
+
+        & div {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            & a:hover {
+                opacity: 0.6;
+            }
+        }
+    }
+
+    & .company {
+        & .last-company__title {
+            font-weight: 500;
+            letter-spacing: 3px;
+            font-size: 16px;
+            margin-bottom: 26px;
+        }
+
+        & .last-company__list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            & li {
+                & a {
+                    color: rgba(0, 0, 0, 0.6);
+                    font-size: 16px;
+
+                    &:hover {
+                        text-decoration: underline;
+                        opacity: 0.8;
+                    }
+                }
+            }
+        }
+    }
+
+    & .help {
+        & h3 {
+            font-weight: 500;
+            letter-spacing: 3px;
+            font-size: 16px;
+            margin-bottom: 26px;
+        }
+
+        & .last-help__list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            & li {
+                & a {
+                    color: rgba(0, 0, 0, 0.6);
+                    font-size: 16px;
+
+                    &:hover {
+                        text-decoration: underline;
+                        opacity: 0.8;
+                    }
+                }
+            }
+        }
+    }
+
+    .faq {
+        & h3 {
+            font-weight: 500;
+            letter-spacing: 3px;
+            font-size: 16px;
+            margin-bottom: 26px;
+        }
+
+        & .last-faq__list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            & li {
+                & a {
+                    color: rgba(0, 0, 0, 0.6);
+                    font-size: 16px;
+
+                    &:hover {
+                        text-decoration: underline;
+                        opacity: 0.8;
+                    }
+                }
+            }
+        }
+    }
+
+    .searches {
+        & h3 {
+            font-weight: 500;
+            letter-spacing: 3px;
+            font-size: 16px;
+            margin-bottom: 26px;
+        }
+
+        & .last-searches__list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            & li {
+                & a {
+                    color: rgba(0, 0, 0, 0.6);
+                    font-size: 16px;
+
+                    &:hover {
+                        text-decoration: underline;
+                        opacity: 0.8;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.last hr {
+    margin-bottom: 25px;
+
+}
+
+
+.last__manage {
+
+
+
+    & .last-pay__box {
+        display: flex;
+        gap: 12px;
+    }
+
+    & p {
+        color: rgba(0, 0, 0, 0.6);
+        font-size: 14px;
+
+    }
+}
+
+.last__pay__box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.last {
+    margin-bottom: 0;
+}
+
+.contact__out {
+    background-color: rgba(0, 0, 0, 1);
+    border-radius: 20px;
+    padding: 36px 64px;
+}
+
+
+
+.contact__title {
+    color: rgba(255, 255, 255, 1);
+    font-size: 40px;
+    max-width: 551px;
+    line-height: 45px;
+}
+
+.contact__box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.contact__form {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    position: relative;
+    gap: 14px;
+
+    &::before {
+        content: "";
+        background-image: url("../../assets/email.svg");
+        position: absolute;
+        background-size: contain;
+        width: 24px;
+        z-index: 11111;
+        left: 10px;
+        top: 10%;
+        height: 24px;
+    }
+
+    & input {
+        padding: 14px 0 14px 54px;
+        border-radius: 30px;
+
+        outline: none;
+        border: none;
+
+        &::placeholder {
+            color: rgba(0, 0, 0, 0.4);
+            font-size: 16px;
+
+        }
+    }
+
+    & button {
+        font-size: 16px;
+        font-weight: 500;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        border-radius: 30px;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}
+
+@media(max-width:1072px) {
+    .last__inner .company .last-company__list li a {
+        font-size: 14px;
+    }
+
+    .last__inner .faq .last-faq__list li a {
+        font-size: 14px;
+    }
+
+    .last__inner .help .last-help__list li a {
+        font-size: 14px;
+    }
+
+    .last__inner .searches .last-searches__list li a {
+        font-size: 14px;
+    }
+
+    .last__info {
+        font-size: 14px;
+    }
+}
+
+
+@media(max-width:880px) {
+    .contact__title {
+        font-size: 32px;
+    }
+
+    .last__inner {
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: start;
+        gap: 30px;
+    }
+}
+
+
+@media(max-width:775px) {
+    .contact__title {
+        font-size: 28px;
+        margin-right: 10px;
+    }
+
+    .contact {
+        top: -180px;
+    }
+
+    .contact__box {
+        flex-direction: column;
+        width: 100%;
+        flex: 1;
+        text-align: center;
+        gap: 20px;
+
+        & form {
+            width: 100%;
+
+        }
+
+
+    }
+
+    .contact__form input {
+        &::placeholder {
+            font-size: 14px;
+        }
+    }
+}
+
+
+@media(max-width:515px) {
+    .contact__title {
+        font-size: 24px;
+        line-height: 25px;
+    }
+
+    .last__inner {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .last__social__box {
+        justify-content: center;
+    }
+}
+
+@media(max-width:749px) {
+    .last__pay__box img {
+        width: 45px;
+        height: 45px;
+    }
+
+    .last__pay__box {
+        align-items: center;
+
+        & p {
+            font-size: 12px;
+        }
+    }
+}
+
+
+@media(max-width:444px) {
+    .last__pay__box {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+
+    .last {
+        padding-bottom: 46px;
+    }
+}
+
+@media(max-width:378px) {
+    .contact__title {
+        font-size: 20px;
+    }
+
+    .contact__form input {
+        &::placeholder {
+            font-size: 13px;
+        }
+    }
+
+    .contact__form button {
+        font-size: 14px;
+    }
+
+    .contact__out {
+        padding: 20px;
+    }
+}

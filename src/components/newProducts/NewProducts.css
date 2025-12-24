@@ -1,0 +1,156 @@
+.new {
+    margin-top: 72px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+   
+}
+
+.new__title {
+    text-align: center;
+    font-weight: 700;
+    font-size: 48px;
+    margin-bottom: 55px;
+}
+
+
+.new__list {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 36px;
+    overflow-x: scroll;
+
+
+    & li {
+        cursor: pointer;
+    }
+}
+
+.new__name {
+    font-size: 17.5px;
+    /* text-transform: lowercase; */
+}
+
+.new__raiting__box {
+    display: flex;
+    gap: 13px;
+    align-items: center;
+    margin-top: 8px;
+    margin-bottom: 8px;
+
+    & p {
+        font-size: 14px;
+
+        & span {
+            color: #ccc;
+        }
+    }
+}
+
+.new__price__box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    & .new__price__actual {
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    & .new__price__old {
+        font-size: 24px;
+        font-weight: 700;
+        color: rgba(0, 0, 0, 0.4);
+        text-decoration: line-through;
+    }
+
+    & .new__price__sell {
+        font-size: 12px;
+        font-weight: 500;
+        color: rgba(255, 51, 51, 1);
+        text-decoration: line-through;
+        background-color: rgba(255, 51, 51, 0.1);
+        padding: 6px 13px;
+        border-radius: 30px;
+    }
+}
+
+
+.new__bottom {
+    text-align: center;
+    margin-bottom: 64px;
+
+    & button {
+        padding: 15px 80px;
+        color: rgba(0, 0, 0, 1);
+        background-color: transparent;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 30px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 500;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}
+.loader {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  border-radius: 50%;
+  color: #FF3D00;
+  animation: fill 1s ease-in infinite alternate;
+}
+.loader::before , .loader::after {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  left: 48px;
+  top: 0;
+  animation: fill 0.9s ease-in infinite alternate;
+}
+
+.loader::after {
+  left: auto;
+  right: 48px;
+  animation-duration: 1.1s;
+}
+
+@keyframes fill {
+ 0% {  box-shadow: 0 0 0 2px inset }
+ 100%{ box-shadow: 0 0 0 10px inset }
+}
+  
+
+
+.new__list::-webkit-scrollbar {
+    display: none;
+    /* Chrome */
+}
+
+@media(max-width:585px) {
+    .new__list {
+        gap: 10px;
+    }
+}
+
+@media(max-width:380px) {
+    .new__title {
+        font-size: 34px;
+    }
+
+
+}
+
+
+@media(max-width:550px){
+    .new__bottom{
+        width: 100%;
+
+        & button{
+            width: 100%;
+        }
+    }
+}

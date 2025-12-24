@@ -1,0 +1,68 @@
+.contact__out {
+    background-color: rgba(0, 0, 0, 1);
+    border-radius: 20px;
+    padding: 36px 64px;
+}
+
+
+.contact__title {
+    color: rgba(255, 255, 255, 1);
+    font-size: 40px;
+    max-width: 551px;
+    line-height: 45px;
+}
+
+.contact__box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.contact__form {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    position: relative;
+    gap: 14px;
+
+    &::before {
+        content: "";
+        background-image: url("../../assets/email.svg");
+        position: absolute;
+        background-size: contain;
+        width: 24px;
+        z-index: 11111;
+        left: 10px;
+        top: 10%;
+        height: 24px;
+    }
+
+    & input {
+        padding: 14px 0 14px 54px;
+        border-radius: 30px;
+
+        outline: none;
+        border: none;
+
+        &::placeholder {
+            color: rgba(0, 0, 0, 0.4);
+            font-size: 16px;
+
+        }
+    }
+
+    & button {
+        font-size: 16px;
+        font-weight: 500;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        border-radius: 30px;
+        border: none;
+        cursor: pointer;
+
+        &:hover{
+            opacity: 0.8;
+        }
+    }
+}
