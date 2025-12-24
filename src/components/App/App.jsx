@@ -16,25 +16,37 @@ function App() {
   const [isLoadingLog, setIsLoadingLog] = useState("Log in")
   const [isLoadingUp, setIsLoadingUp] = useState("Create account")
 
-  const [userRole, setUserRole] = useState(null)
-  const [token, setToken] = useState(localStorage.getItem("token"))
+  // const [userRole, setUserRole] = useState(null)
+  // const [token, setToken] = useState(localStorage.getItem("token"))
 
-  useEffect(() => {
-    if (!token) {
-      setUserRole(null)
-      return
-    }
+  // useEffect(() => {
+  //   if (!token) {
+  //     setUserRole(null)
+  //     return
+  //   }
 
+  //   try {
+  //     let decoded = jwtDecode(token)
+  //     setUserRole(decoded.role)
+  //   }
+  //   catch (err) {
+  //     localStorage.removeItem("token")
+  //     setToken(null)
+  //     setUserRole(null)
+  //   }
+  // }, [token])
+
+  const tokenFromStorage = localStorage.getItem("token")
+
+  const [token, setToken] = useState(tokenFromStorage)
+  const [userRole, setUserRole] = useState(() => {
     try {
-      let decoded = jwtDecode(token)
-      setUserRole(decoded.role)
+      return tokenFromStorage ? jwtDecode(tokenFromStorage).role : null
+    } catch {
+      return null
     }
-    catch (err) {
-      localStorage.removeItem("token")
-      setToken(null)
-      setUserRole(null)
-    }
-  }, [token])
+  })
+
 
   // let token
 
