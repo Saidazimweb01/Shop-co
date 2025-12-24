@@ -16,37 +16,25 @@ function App() {
   const [isLoadingLog, setIsLoadingLog] = useState("Log in")
   const [isLoadingUp, setIsLoadingUp] = useState("Create account")
 
-  // const [userRole, setUserRole] = useState(null)
-  // const [token, setToken] = useState(localStorage.getItem("token"))
+  const [userRole, setUserRole] = useState(null)
+  const [token, setToken] = useState(localStorage.getItem("token"))
 
-  // useEffect(() => {
-  //   if (!token) {
-  //     setUserRole(null)
-  //     return
-  //   }
-
-  //   try {
-  //     let decoded = jwtDecode(token)
-  //     setUserRole(decoded.role)
-  //   }
-  //   catch (err) {
-  //     localStorage.removeItem("token")
-  //     setToken(null)
-  //     setUserRole(null)
-  //   }
-  // }, [token])
-
-  const tokenFromStorage = localStorage.getItem("token")
-
-  const [token, setToken] = useState(tokenFromStorage)
-  const [userRole, setUserRole] = useState(() => {
-    try {
-      return tokenFromStorage ? jwtDecode(tokenFromStorage).role : null
-    } catch {
-      return null
+  useEffect(() => {
+    if (!token) {
+      setUserRole(null)
+      return
     }
-  })
 
+    try {
+      let decoded = jwtDecode(token)
+      setUserRole(decoded.role)
+    }
+    catch (err) {
+      localStorage.removeItem("token")
+      setToken(null)
+      setUserRole(null)
+    }
+  }, [token])
 
   // let token
 
@@ -79,7 +67,7 @@ function App() {
             <Login setToken={setToken} isLoadingLog={isLoadingLog} setIsLoadingLog={setIsLoadingLog} />
           } />
           <Route path='/' element={
-            userRole ? <Navigate to={`${userRole}`} /> : <Default token={token} setToken={setToken} />
+            userRole ? <Navigate to={`/${userRole}`} /> : <Default token={token} setToken={setToken} />
           } />
           <Route path='/register' element={<Register isLoadingUp={isLoadingUp} setIsLoadingUp={setIsLoadingUp} />} />
           <Route path='/user' element={
@@ -95,7 +83,7 @@ function App() {
           } />
           <Route path='/detail/:id' element={
             <PrivateRoute role={"user"}>
-              <Detail />
+              <Detail token={token} setToken={setToken} />
             </PrivateRoute>
           } />
 

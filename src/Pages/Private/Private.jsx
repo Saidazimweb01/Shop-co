@@ -21,7 +21,7 @@ function Private({ token, setToken }) {
   return (
 
     <>
-      <Header token={token} setToken={setToken} isPublic={isPublic} />
+      <Header setToken={setToken} token={token} isPublic={isPublic} />
       <main>
         <Hero isPublic={isPublic} />
       </main>

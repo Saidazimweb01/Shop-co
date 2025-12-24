@@ -4,10 +4,10 @@ import Products from '../../components/Products.jsx/Products'
 import Header from '../../components/Header/Header'
 import UserComment from '../../components/UserComment/UserComment'
 
-function Detail() {
+function Detail({ token, setToken }) {
     return (
         <>
-            <Header />
+            <Header token={token} setToken={setToken} />
             <Products />
             <UserComment />
         </>
