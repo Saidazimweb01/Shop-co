@@ -20,7 +20,8 @@ function UserComment() {
     const [loadingComment, setLoadingComment] = useState("Comment")
     const [sortedComm, setSortedComm] = useState("Latest")
     const [filteredComm, setFilteredComm] = useState("")
-
+    const [infoId, setInfoId] = useState(null)
+    const [openMoreId, setOpenMoreId] = useState(null)
 
     // const [starsRate, setStarsRate] = useState("")
 
@@ -174,14 +175,40 @@ function UserComment() {
                                 <li className="raiting__item" key={index}>
                                     <div className='raiting__comment-box'>
                                         <img src={stars} alt="" />
-                                        <button className='raititng__more-btn'><img src={more} alt="" /></button>
+                                        <button className='raititng__more-btn' onClick={() => setOpenMoreId(openMoreId == el._id ? null : el._id)}><img src={more} alt="" /></button>
+                                        {
+                                            openMoreId == el._id && (
+                                                <div className='raiting-more__box'>
+                                                    <ul className='raiting-more__list'>
+                                                        <li className="raiting-more__item">
+                                                            <button>✏️</button>
+                                                        </li>
+                                                        <li className="raiting-more__item">
+                                                            <button>🗑️</button>
+                                                        </li>
+                                                        {
+                                                            el.comment.length > 30 && (
+                                                                <li className="raiting-more__item">
+                                                                    <button onClick={() => {
+                                                                        setInfoId(infoId == el._id ? null : el._id)
+                                                                        setOpenMoreId(null)
+                                                                    }
+
+                                                                    }>More...</button>
+                                                                </li>
+                                                            )
+                                                        }
+                                                    </ul>
+                                                </div>
+                                            )
+                                        }
                                     </div>
 
                                     <div className="raiting__status-box">
                                         <h3 className='raiting__name'>{el.user}</h3>
                                         <img src={status} alt="" />
                                     </div>
-                                    <p className="raiting__info">
+                                    <p className={infoId == el._id ? "raiting__info full" : "raiting__info"}>
                                         {el.comment}
                                     </p>
 
@@ -196,6 +223,8 @@ function UserComment() {
                         }
 
                     </ul>
+
+
 
                     {
                         products?.comments?.length >= 6 ? (

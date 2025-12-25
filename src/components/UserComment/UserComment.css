@@ -128,12 +128,14 @@
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 20px;
     padding: 28px 32px;
+    overflow: visible;
 }
 
 .raiting__comment-box {
     display: flex;
     justify-content: space-between;
     margin-bottom: 17px;
+    position: relative;
 }
 
 .raititng__more-btn {
@@ -281,6 +283,79 @@
         opacity: 0.7;
     }
 }
+
+
+.raiting-more__box {
+    position: absolute;
+    width: 120px;
+    right: 0;
+    top: 100%;
+    margin-top: 8px;
+    z-index: 10;
+
+    & ul {
+        padding: 10px;
+        background-color: black;
+
+
+        & li {
+            width: 100%;
+            transition: 0.3s;
+
+            cursor: pointer;
+
+            &:hover {
+                opacity: 0.7;
+            }
+
+            & button {
+                width: 100%;
+                background-color: #ccc;
+                padding: 5px;
+                cursor: pointer;
+                border: 1.5px solid black;
+                font-weight: 700;
+            }
+        }
+    }
+}
+
+.full {
+    -webkit-line-clamp: unset;
+    overflow: visible;
+
+}
+
+.raiting__item {
+    position: relative;
+    overflow: visible;
+}
+
+.raiting__info {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+.raiting__info.full {
+    display: block;
+    -webkit-line-clamp: unset;
+    overflow: visible;
+}
+
+.raiting-more__box {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    margin-top: 8px;
+    z-index: 10;
+}
+
 
 @media(max-width:560px) {
     .raiting__filter-box {
