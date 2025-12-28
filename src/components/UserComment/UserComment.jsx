@@ -263,7 +263,7 @@ function UserComment() {
                                             setLoadMore(prev => prev + 6)
                                         }
                                     }}>
-                                        {loadmore >= products.comments.length ? "Close" : "Load More Reviews"}
+                                        {loadmore > products.comments.length ? "Close" : "Load More Reviews"}
                                     </button>
                                 </div>
                             </>

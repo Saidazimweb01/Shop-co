@@ -13,7 +13,7 @@ import Last from '../../components/Last/Last'
 
 
 
-function Private({ token, setToken, setIsDark, isDark }) {
+function Private({ token, setToken,  }) {
   const [isPublic, setIsPublic] = useState(false)
 
 
@@ -21,7 +21,7 @@ function Private({ token, setToken, setIsDark, isDark }) {
   return (
 
     <>
-      <Header setToken={setToken} token={token} isPublic={isPublic} isDark={isDark} setIsDark={setIsDark} />
+      <Header setToken={setToken} token={token} isPublic={isPublic}  />
       <main>
         <Hero isPublic={isPublic} />
       </main>

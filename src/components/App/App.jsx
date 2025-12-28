@@ -16,7 +16,7 @@ function App() {
 
   const [isLoadingLog, setIsLoadingLog] = useState("Log in")
   const [isLoadingUp, setIsLoadingUp] = useState("Create account")
-  const [isDark, setIsDark] = useState(false)
+  // const [isDark, setIsDark] = useState(false)
   const [userRole, setUserRole] = useState(null)
   const [token, setToken] = useState(localStorage.getItem("token"))
 
@@ -58,14 +58,7 @@ function App() {
 
   // }, [])
 
-  useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add("dark")
-    } else {
-      document.documentElement.classList.remove("dark")
-    }
-  }, [isDark])
-
+  
 
 
   return (
@@ -78,13 +71,13 @@ function App() {
             <Login setToken={setToken} isLoadingLog={isLoadingLog} setIsLoadingLog={setIsLoadingLog} />
           } />
           <Route path='/' element={
-            userRole ? <Navigate to={`/${userRole}`} /> : <Default isDark={isDark} setIsDark={setIsDark} token={token} setToken={setToken} />
+            userRole ? <Navigate to={`/${userRole}`} /> : <Default token={token} setToken={setToken} />
           } />
           <Route path='/register' element={<Register isLoadingUp={isLoadingUp} setIsLoadingUp={setIsLoadingUp} />} />
           <Route path='/user' element={
 
             <PrivateRoute role={"user"}>
-              <Private token={token} setToken={setToken} isDark={isDark} setIsDark={setIsDark} />
+              <Private token={token} setToken={setToken}  />
             </PrivateRoute>
           } />
           <Route path='/admin' element={

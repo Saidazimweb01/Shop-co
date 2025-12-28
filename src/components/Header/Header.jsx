@@ -10,7 +10,7 @@ import burger from "../../assets/burger.svg"
 import loop from "../../assets/head-loop.svg"
 
 
-export default function Header({ isPublic, token, setToken, setIsDark, isDark }) {
+export default function Header({ isPublic, token, setToken }) {
     const [isOpen, setIsOpen] = useState(true)
     const navigate = useNavigate()
     const [userInfo, setUserInfo] = useState([])
@@ -253,7 +253,7 @@ export default function Header({ isPublic, token, setToken, setIsDark, isDark })
 
                                                 <div className="head__close__box ">
                                                     <button className="head__close" onClick={() => setProfile(false)}>Close</button>
-                                                    <button className="head__mode " onClick={() => setIsDark(!isDark)}>Switch to: {isDark ? "Light mode" : "Dark mode"}</button>
+                                                   
                                                 </div>
                                                 <div className="head-profile__box">
                                                     <h3 className="head__firstName">First Name: <span>{userInfo.firstName}</span></h3>
