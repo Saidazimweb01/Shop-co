@@ -59,7 +59,7 @@ function Comments() {
 
                     {
                         products.map((el,) => (
-                            el.comments.map((c) => (
+                            el.comments.map((c) => c.userRate >= 4.5 &&  (
                                 <li key={c._id} className="comments__item">
                                     <div className="comment-stars">
                                         {[1, 2, 3, 4, 5].map((star) => (
