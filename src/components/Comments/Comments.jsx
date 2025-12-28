@@ -36,17 +36,17 @@ function Comments() {
         })
     }
 
-  
-  
 
-    
+
+
+
 
     return (
         <>
             <section className="comments">
                 <div className="container">
                     <div className="comments__box">
-                        <h2 className='comments__title'>OUR HAPPY CUSTOMERS</h2>
+                        <h2 className=' comments__title'>OUR HAPPY CUSTOMERS</h2>
                         <div className="comments__manage">
                             <button className='comments__left' onClick={scrollLeft}><img src={left} alt="" /></button>
                             <button className='comments__right' onClick={scrollRight}><img src={right} alt="" /></button>
@@ -61,7 +61,31 @@ function Comments() {
                         products.map((el,) => (
                             el.comments.map((c) => (
                                 <li key={c._id} className="comments__item">
-                                    <img src={fiveStar} alt="" />
+                                    <div className="comment-stars">
+                                        {[1, 2, 3, 4, 5].map((star) => (
+                                            <div className="star-wrapper" key={star}>
+                                                <span
+                                                    className={
+                                                        c.userRate >= star - 0.5
+                                                            ? "star half active"
+                                                            : "star half"
+                                                    }
+                                                >
+                                                    ★
+                                                </span>
+
+                                                <span
+                                                    className={
+                                                        c.userRate >= star
+                                                            ? "star full active"
+                                                            : "star full"
+                                                    }
+                                                >
+                                                    ★
+                                                </span>
+                                            </div>
+                                        ))}
+                                    </div>
                                     <div className="comments__status__bar">
                                         <h3 className='comments__name'>{c.user}</h3>
                                         <img src={status} alt="" />

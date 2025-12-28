@@ -14,7 +14,7 @@ function UserComment() {
 
     const [loadmore, setLoadMore] = useState(6)
     const [isOpen, setIsOpen] = useState("")
-    const [selectStars, setSelectStars] = useState("0")
+    const [selectStars, setSelectStars] = useState(1)
     const [products, setProducts] = useState([])
     const [userComment, setUserComment] = useState("")
     const [loadingComment, setLoadingComment] = useState("Comment")
@@ -79,7 +79,7 @@ function UserComment() {
 
             body: JSON.stringify({
                 user: userName,
-                userRate: selectStars == "0" ? "1" : selectStars,
+                userRate: selectStars == 0  ? 1 : selectStars,
                 posted: new Date().toISOString(),
                 comment: userComment,
             }),
@@ -92,6 +92,7 @@ function UserComment() {
                 getComments()
                 setUserComment("")
                 setIsOpen(false)
+                setSelectStars(0)
 
             }).finally(() => {
                 setLoadingComment("Comment")
@@ -174,7 +175,31 @@ function UserComment() {
                             newSortedDate.slice(0, loadmore).map((el, index) => (
                                 <li className="raiting__item" key={index}>
                                     <div className='raiting__comment-box'>
-                                        <img src={stars} alt="" />
+                                        <div className="comment-stars">
+                                            {[1, 2, 3, 4, 5].map((star) => (
+                                                <div className="star-wrapper" key={star}>
+                                                    <span
+                                                        className={
+                                                            el.userRate >= star - 0.5
+                                                                ? "star half active"
+                                                                : "star half"
+                                                        }
+                                                    >
+                                                        ★
+                                                    </span>
+
+                                                    <span
+                                                        className={
+                                                            el.userRate >= star
+                                                                ? "star full active"
+                                                                : "star full"
+                                                        }
+                                                    >
+                                                        ★
+                                                    </span>
+                                                </div>
+                                            ))}
+                                        </div>
                                         <button className='raititng__more-btn' onClick={() => setOpenMoreId(openMoreId == el._id ? null : el._id)}><img src={more} alt="" /></button>
                                         {
                                             openMoreId == el._id && (
@@ -256,18 +281,29 @@ function UserComment() {
                         <h2 className='raiting-modal__title'>{userName}'s comment</h2>
 
                         <form onSubmit={comment} className='raiting-modal__form' action="#">
-                            <select value={selectStars} onChange={handleStars} className='raiting-modal__star'>
-                                <option value="0" disabled>Choose star</option>
-                                <option value="1">1</option>
-                                <option value="1.5">1.5</option>
-                                <option value="2">2</option>
-                                <option value="2.5">2.5</option>
-                                <option value="3">3</option>
-                                <option value="3.5">3.5</option>
-                                <option value="4">4</option>
-                                <option value="4.5">4.5</option>
-                                <option value="5">5</option>
-                            </select>
+                            <div className="star-rating">
+                                {[1, 2, 3, 4, 5].map((star) => (
+                                    <div className="star-wrapper" key={star}>
+                                        <span
+                                            className={selectStars >= star - 0.5 ? "star half active" : "star half"}
+                                            onClick={() => setSelectStars(star - 0.5)}
+                                        >
+                                            ★
+                                        </span>
+                                        <span
+                                            className={selectStars >= star ? "star full active" : "star full"}
+                                            onClick={() => setSelectStars(star)}
+                                        >
+                                            ★
+                                        </span>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <p className="rating-text">Rating: {selectStars}</p>
+
+
+
                             <input maxLength={100} type="text" className='raiting-modal__comment' value={userComment} onChange={(e) => setUserComment(e.target.value)} placeholder='Write in here your comment' />
                             <p style={{ color: "#ccc", textAlign: "right" }}>{100 - userComment.length}/100</p>
                             <button className='raiting-modal__submit'>{loadingComment}</button>

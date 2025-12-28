@@ -33,6 +33,9 @@ function Products() {
 
     }, [])
 
+    let averageRating;
+
+
     // console.log(selectProducts);
 
 
@@ -72,23 +75,47 @@ function Products() {
                                         <div key={index} className="details__right">
                                             <h2 className='details-right__title'>{el.title}</h2>
                                             <div className="details-right__rating-box">
-                                                <img src={star} alt="" />
-                                                <p>
-                                                    {
-                                                        el.comments.length ? (
-                                                            el.comments.map(r => +r.userRate)
-                                                                .reduce((sum, total) => {
-                                                                    sum + total / sum.length
-                                                                    return total
-                                                                })
-                                                        ).toFixed(1)
-                                                            :
-                                                            (
-                                                                "0"
-                                                            )
-                                                    }
+                                                {/* Product rating */}
+                                                <div className="details-right__rating-box">
+                                                    {selectProducts
+                                                        .filter(el => el._id === id) // faqat hozirgi product
+                                                        .map(el => {
+                                                            // Average rating hisoblash
+                                                            const averageRating = el.comments.length
+                                                                ? (
+                                                                    el.comments
+                                                                        .map(r => Number(r.userRate))
+                                                                        .reduce((sum, r) => sum + r, 0)
+                                                                    / el.comments.length
+                                                                ).toFixed(1)
+                                                                : 0;
 
-                                                    /<span>5</span></p>
+                                                            return (
+                                                                <div key={el._id} className='raiting-box'>
+                                                                    <div className="comment-stars">
+                                                                        {[1, 2, 3, 4, 5].map(star => (
+                                                                            <div className="star-wrapper" key={star}>
+                                                                                {/* Chap yarmi */}
+                                                                                <span
+                                                                                    className={averageRating >= star - 0.5 ? "star half active" : "star half"}
+                                                                                >
+                                                                                    ★
+                                                                                </span>
+                                                                                {/* To‘liq star */}
+                                                                                <span
+                                                                                    className={averageRating >= star ? "star full active" : "star full"}
+                                                                                >
+                                                                                    ★
+                                                                                </span>
+                                                                            </div>
+                                                                        ))}
+                                                                    </div>
+                                                                    <p>{averageRating}/<span>5</span></p>
+                                                                </div>
+                                                            )
+                                                        })}
+                                                </div>
+
                                             </div>
                                             <div className="details-right__price-box">
                                                 <p className='details-right__price-actual'>{el.price ? "$" + el.price : "Left"}</p>

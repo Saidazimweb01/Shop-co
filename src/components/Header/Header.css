@@ -338,7 +338,7 @@
 .head__close__box {
     text-align: right;
     /* margin-top: 22px; */
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 
 }
 
@@ -498,11 +498,29 @@
     top: 55px;
 }
 
-.cite-header{
+.cite-header {
     position: fixed;
     width: 100%;
     z-index: 2112121;
     transition: 0.3s;
+}
+
+
+.head__mode {
+    width: 100%;
+    margin-top: 20px;
+    padding: 6px;
+    font-weight: 600;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+        opacity: 0.7;
+    }
+
+    background-color: #000000;
 }
 
 @media(max-width:810px) {
@@ -619,7 +637,7 @@
     }
 
     .head__profile {
-        height: 365px;
+        height: 378px;
     }
 }
 
@@ -668,21 +686,21 @@
     }
 
 
-    .cite-header__burger{
+    .cite-header__burger {
         display: inline-block;
     }
 
-    .cite-header__login-box{
+    .cite-header__login-box {
         right: calc(50% - 100px);
     }
 }
 
-@media(max-width:442px){
-    .cite-header__login-box{
+@media(max-width:442px) {
+    .cite-header__login-box {
         top: 114px;
     }
 
-    .without-login{
+    .without-login {
         top: 55px;
     }
 }

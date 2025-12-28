@@ -1,0 +1,10 @@
+@import "tailwindcss";
+/* @custom-variant dark (&:where(.dark, .dark *)); */
+
+
+
+
+body {
+    overflow-x: hidden;
+    font-family: "Poppins", sans-serif;
+}

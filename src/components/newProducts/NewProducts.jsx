@@ -36,35 +36,58 @@ function NewProducts({ isPublic }) {
 
                                             <img width={295} height={298} src={el.images[0]} alt="" />
                                             <h3 className='new__name'>{el.title}</h3>
-                                            <div className="new__raiting__box">
-                                                <img width={104} height={18} src={stars} alt="Stars" />
-                                                <p className='new__raitinbg'>
-                                                    {
-                                                        el.comments.length ? (
-                                                            el.comments.map(r => Number(r.userRate))
-                                                                .reduce((sum, total) => {
-                                                                    sum + total / sum.length
-                                                                    return total
-                                                                }, 0)
-                                                        ).toFixed(1)
-                                                        :
-                                                        (
-                                                            "0"
-                                                        )
-                                                            
-                                                    }
+                                        
+                                                <div className="new__raiting__box">
+                                                    <div className="comment-stars">
+                                                        {(() => {
+                                                            // Average rating
+                                                            const averageRating = el.comments.length
+                                                                ? (
+                                                                    el.comments.map(r => Number(r.userRate))
+                                                                        .reduce((sum, r) => sum + r, 0)
+                                                                    / el.comments.length
+                                                                ).toFixed(1)
+                                                                : 0;
 
-                                                    /<span>5</span></p>
-                                            </div>
-                                            <div className="new__price__box">
-                                                <p className='new__price__actual'>{el.price ? "$" + el.price : "Left"}</p>
-                                                <p className='new__price__old'> {
-                                                    el.discount
-                                                        ? "$" + Math.round(el.price / (1 - el.discount / 100))
-                                                        : ""
-                                                }</p>
-                                                <p className='new__price__sell' style={!el.discount ? { display: 'none' } : {}}>{el.discount ? "-" + el.discount + "%" : ""}</p>
-                                            </div>
+                                                            return [1, 2, 3, 4, 5].map(star => (
+                                                                <div className="star-wrapper" key={star}>
+                                                                    {/* Chap yarmi */}
+                                                                    <span
+                                                                        className={averageRating >= star - 0.5 ? "star half active" : "star half"}
+                                                                    >
+                                                                        ★
+                                                                    </span>
+                                                                    {/* To‘liq star */}
+                                                                    <span
+                                                                        className={averageRating >= star ? "star full active" : "star full"}
+                                                                    >
+                                                                        ★
+                                                                    </span>
+                                                                </div>
+                                                            ));
+                                                        })()}
+                                                    </div>
+                                                    <p className='new__raitinbg'>
+                                                        {el.comments.length
+                                                            ? (
+                                                                el.comments.map(r => Number(r.userRate))
+                                                                    .reduce((sum, r) => sum + r, 0)
+                                                                / el.comments.length
+                                                            ).toFixed(1)
+                                                            : "0"
+                                                        }/<span>5</span>
+                                                    </p>
+                                                </div>
+
+                                                <div className="new__price__box">
+                                                    <p className='new__price__actual'>{el.price ? "$" + el.price : "Left"}</p>
+                                                    <p className='new__price__old'> {
+                                                        el.discount
+                                                            ? "$" + Math.round(el.price / (1 - el.discount / 100))
+                                                            : ""
+                                                    }</p>
+                                                    <p className='new__price__sell' style={!el.discount ? { display: 'none' } : {}}>{el.discount ? "-" + el.discount + "%" : ""}</p>
+                                                </div>
                                         </li>
                                     ))
                                 }

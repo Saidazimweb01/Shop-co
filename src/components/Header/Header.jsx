@@ -10,7 +10,7 @@ import burger from "../../assets/burger.svg"
 import loop from "../../assets/head-loop.svg"
 
 
-export default function Header({ isPublic, token, setToken }) {
+export default function Header({ isPublic, token, setToken, setIsDark, isDark }) {
     const [isOpen, setIsOpen] = useState(true)
     const navigate = useNavigate()
     const [userInfo, setUserInfo] = useState([])
@@ -159,7 +159,7 @@ export default function Header({ isPublic, token, setToken }) {
                                         <div className="cite-header__top">
                                             <div className="container">
                                                 <div className={isPublic ? "cite-header__top__box" : "head__top__box"}>
-                                                    <p> Get 20% off to your first order.</p>
+                                                    <p className=""> Get 20% off to your first order.</p>
                                                     <button onClick={() => setIsOpen(false)}><img src={closeIcone} alt="close button" /></button>
                                                 </div>
                                             </div>
@@ -190,12 +190,12 @@ export default function Header({ isPublic, token, setToken }) {
                                             <ul className="head__list">
                                                 <li className="head__item">
                                                     <select className="head__select">
-                                                        <option value="All">Shop</option>
+                                                        <option value="All " >Shop</option>
                                                         <option value="All">All</option>
                                                     </select>
                                                 </li>
                                                 <li className="head__item">
-                                                    <Link to={"#"}>On Sale</Link>
+                                                    <Link to={"#"} >On Sale</Link>
                                                 </li>
                                                 <li className="head__item">
                                                     <Link to={"#"}>New Arrivals</Link>
@@ -235,7 +235,7 @@ export default function Header({ isPublic, token, setToken }) {
                                                         </select>
                                                     </li>
                                                     <li className="head__boxs">
-                                                        <Link to={"#"}>On Sale</Link>
+                                                        <Link to={"#"} >On Sale</Link>
                                                     </li>
                                                     <li className="head__boxs">
                                                         <Link to={"#"}>New Arrivals</Link>
@@ -249,10 +249,11 @@ export default function Header({ isPublic, token, setToken }) {
                                     }
                                     {
                                         profile && (
-                                            <div className={isOpen ? "head__profile" : "head__profile without"}>
+                                            <div className={isOpen ? "head__profile " : "head__profile without"}>
 
-                                                <div className="head__close__box">
+                                                <div className="head__close__box ">
                                                     <button className="head__close" onClick={() => setProfile(false)}>Close</button>
+                                                    <button className="head__mode " onClick={() => setIsDark(!isDark)}>Switch to: {isDark ? "Light mode" : "Dark mode"}</button>
                                                 </div>
                                                 <div className="head-profile__box">
                                                     <h3 className="head__firstName">First Name: <span>{userInfo.firstName}</span></h3>
@@ -267,8 +268,12 @@ export default function Header({ isPublic, token, setToken }) {
                                             </div>
                                         )
                                     }
+
+
                                 </div>
                             </header>
+
+                            
                         </>
                     )
             }
