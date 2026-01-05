@@ -9,8 +9,10 @@ import { jwtDecode } from 'jwt-decode'
 function Comments() {
     const listRef = useRef(null)
     const [products, setProducts] = useState([])
+    const [load, setLoad] = useState("")
 
     useEffect(() => {
+        setLoad("loader")
         fetch("https://shop-co-backend-1.onrender.com/api/products").then((res) => {
             return res.json()
         })
@@ -19,6 +21,8 @@ function Comments() {
                 setProducts(data || [])
                 // console.log(data);
 
+            }).finally(() => {
+                setLoad("")
             })
     }, [])
 
@@ -47,19 +51,30 @@ function Comments() {
                 <div className="container">
                     <div className="comments__box">
                         <h2 className=' comments__title'>OUR HAPPY CUSTOMERS</h2>
-                        <div className="comments__manage">
-                            <button className='comments__left' onClick={scrollLeft}><img src={left} alt="" /></button>
-                            <button className='comments__right' onClick={scrollRight}><img src={right} alt="" /></button>
-                        </div>
+                        {
+                            load !== "loader" &&  (
+                                <div className="comments__manage">
+                                    <button className='comments__left' onClick={scrollLeft}><img src={left} alt="" /></button>
+                                    <button className='comments__right' onClick={scrollRight}><img src={right} alt="" /></button>
+                                </div>
+                            )
+                        }
                     </div>
 
+                    {
+                        load && (
+                            <div className="loader-container">
+                                <div className={load}></div>
+                            </div>
+                        )
+                    }
                 </div>
 
                 <ul ref={listRef} className="comments__card">
 
                     {
                         products.map((el,) => (
-                            el.comments.map((c) => c.userRate >= 4.5 &&  (
+                            el.comments.map((c) => c.userRate >= 4.5 && (
                                 <li key={c._id} className="comments__item">
                                     <div className="comment-stars">
                                         {[1, 2, 3, 4, 5].map((star) => (

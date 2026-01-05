@@ -22,16 +22,20 @@ function UserComment() {
     const [filteredComm, setFilteredComm] = useState("")
     const [infoId, setInfoId] = useState(null)
     const [openMoreId, setOpenMoreId] = useState(null)
+    const [load, setLoad] = useState("")
 
     // const [starsRate, setStarsRate] = useState("")
 
     let token = localStorage.getItem("token")
 
     function getComments() {
+        setLoad("loader")
         fetch(`https://shop-co-backend-1.onrender.com/api/products/${id}`)
             .then(res => res.json())
             .then(data => {
                 setProducts(data)
+            }).finally(() => {
+                setLoad("")
             })
     }
 
@@ -47,15 +51,18 @@ function UserComment() {
     }
 
     useEffect(() => {
+        setLoad("loader")
         fetch(`https://shop-co-backend-1.onrender.com/api/products/${id}`).then((res) => {
             return res.json()
         })
             .then((data) => {
-                setProducts(data || [])
-                console.log(data);
+                setProducts(data)
+                // console.log(data);
 
+            }).finally(() => {
+                setLoad("")
             })
-    }, [])
+    }, [id])
 
 
 
@@ -79,7 +86,7 @@ function UserComment() {
 
             body: JSON.stringify({
                 user: userName,
-                userRate: selectStars == 0  ? 1 : selectStars,
+                userRate: selectStars == 0 ? 1 : selectStars,
                 posted: new Date().toISOString(),
                 comment: userComment,
             }),
@@ -98,7 +105,7 @@ function UserComment() {
                 setLoadingComment("Comment")
             })
 
-        console.log(products);
+        // console.log(products);
 
     }
 
@@ -111,7 +118,7 @@ function UserComment() {
         setSelectStars(evt.target.value)
     }
 
-    console.log(selectStars);
+    // console.log(selectStars);
 
 
     let newSortedDate = products?.comments ? (
@@ -170,6 +177,14 @@ function UserComment() {
                         </div>
                     </div>
 
+
+                    {
+                        load == "loader" && (
+                            <div className="loader-box">
+                                <div className={load}></div>
+                            </div>
+                        )
+                    }
                     <ul className="raiting__card">
                         {
                             newSortedDate.slice(0, loadmore).map((el, index) => (

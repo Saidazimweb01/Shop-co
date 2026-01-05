@@ -68,6 +68,9 @@ function Register({ isLoadingUp, setIsLoadingUp }) {
 
     return (
         <>
+            <div className='main'>
+                Saytimiz vaqtinchalik beta testda, kamchiliklar uchun uzur!!!
+            </div>
             <div className='register__top'>
                 <Link to={"/login"}>Back</Link>
             </div>

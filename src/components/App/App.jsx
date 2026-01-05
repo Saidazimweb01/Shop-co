@@ -10,6 +10,7 @@ import Admin from '../../Pages/Admin/Admin'
 
 import { jwtDecode } from 'jwt-decode'
 import Detail from '../../Pages/Detail/Detail'
+import Allproducts from '../../Pages/Allproducts/Allproducts'
 // import ""
 
 function App() {
@@ -58,13 +59,13 @@ function App() {
 
   // }, [])
 
-  
+
 
 
   return (
     <>
 
-
+     
       <BrowserRouter>
         <Routes>
           <Route path='/login' element={
@@ -77,7 +78,7 @@ function App() {
           <Route path='/user' element={
 
             <PrivateRoute role={"user"}>
-              <Private token={token} setToken={setToken}  />
+              <Private token={token} setToken={setToken} />
             </PrivateRoute>
           } />
           <Route path='/admin' element={
@@ -90,7 +91,11 @@ function App() {
               <Detail token={token} setToken={setToken} />
             </PrivateRoute>
           } />
-
+          <Route path='/products' element={
+            <PrivateRoute role={"user"}>
+              <Allproducts token={token} setToken={setToken} />
+            </PrivateRoute>
+          } />
         </Routes>
       </BrowserRouter>
     </>

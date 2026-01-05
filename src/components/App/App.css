@@ -12,73 +12,32 @@
 
 /* HTML: <div class="loader"></div> */
 .loader {
-  width: 40px;
-  aspect-ratio: 1;
-  --c: no-repeat linear-gradient(#000 0 0);
-  background:
-    var(--c) 0 0,
-    var(--c) 0 100%,
-    var(--c) 50% 0,
-    var(--c) 50% 100%,
-    var(--c) 100% 0,
-    var(--c) 100% 100%;
-  background-size: 8px 50%;
-  animation: l7-0 1s infinite;
-  position: relative;
-  overflow: hidden;
-}
-
-.loader:before {
-  content: "";
-  position: absolute;
-  width: 8px;
-  height: 8px;
+  width: 60px;
+  height: 25px;
+  border: 2px solid;
+  box-sizing: border-box;
   border-radius: 50%;
-  background: #000;
-  top: calc(50% - 4px);
-  left: -8px;
+  display: grid;
+  animation: l2 2s infinite linear;
+}
+
+.loader:before,
+.loader:after {
+  content: "";
+  grid-area: 1/1;
+  border: inherit;
+  border-radius: 50%;
   animation: inherit;
-  animation-name: l7-1;
+  animation-duration: 3s;
 }
 
-@keyframes l7-0 {
-  16.67% {
-    background-size: 8px 30%, 8px 30%, 8px 50%, 8px 50%, 8px 50%, 8px 50%
-  }
-
-  33.33% {
-    background-size: 8px 30%, 8px 30%, 8px 30%, 8px 30%, 8px 50%, 8px 50%
-  }
-
-  50% {
-    background-size: 8px 30%, 8px 30%, 8px 30%, 8px 30%, 8px 30%, 8px 30%
-  }
-
-  66.67% {
-    background-size: 8px 50%, 8px 50%, 8px 30%, 8px 30%, 8px 30%, 8px 30%
-  }
-
-  83.33% {
-    background-size: 8px 50%, 8px 50%, 8px 50%, 8px 50%, 8px 30%, 8px 30%
-  }
+.loader:after {
+  --s: -1;
 }
 
-@keyframes l7-1 {
-  20% {
-    left: 0px
-  }
-
-  40% {
-    left: calc(50% - 4px)
-  }
-
-  60% {
-    left: calc(100% - 8px)
-  }
-
-  80%,
+@keyframes l2 {
   100% {
-    left: 100%
+    transform: rotate(calc(var(--s, 1)*1turn))
   }
 }
 
@@ -95,4 +54,11 @@ ol {
   max-width: 1280px;
   padding: 0 20px;
   margin: 0 auto;
+}
+
+
+.main {
+  background-color: yellow;
+  text-align: center;
+  font-weight: 700;
 }

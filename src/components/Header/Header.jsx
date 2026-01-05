@@ -98,6 +98,9 @@ export default function Header({ isPublic, token, setToken }) {
             {
                 isPublic ? (
                     <header className={scrollPublic}>
+                        <div className='main'>
+                            Saytimiz vaqtinchalik beta testda, kamchiliklar uchun uzur!!!
+                        </div>
                         {
                             isOpen ? (
                                 <div className="cite-header__top">
@@ -154,6 +157,9 @@ export default function Header({ isPublic, token, setToken }) {
                     (
                         <>
                             <header className={scroll}>
+                                <div className='main'>
+                            Saytimiz vaqtinchalik beta testda, kamchiliklar uchun uzur!!!
+                        </div>
                                 {
                                     isOpen ? (
                                         <div className="cite-header__top">
@@ -253,7 +259,7 @@ export default function Header({ isPublic, token, setToken }) {
 
                                                 <div className="head__close__box ">
                                                     <button className="head__close" onClick={() => setProfile(false)}>Close</button>
-                                                   
+
                                                 </div>
                                                 <div className="head-profile__box">
                                                     <h3 className="head__firstName">First Name: <span>{userInfo.firstName}</span></h3>
@@ -270,10 +276,12 @@ export default function Header({ isPublic, token, setToken }) {
                                     }
 
 
+
+
                                 </div>
                             </header>
 
-                            
+
                         </>
                     )
             }

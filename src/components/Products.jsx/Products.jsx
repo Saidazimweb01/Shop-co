@@ -12,7 +12,7 @@ function Products() {
     const [size, setSize] = useState([])
     const ALL_SIZES = ["small", "medium", "large", "x-large"];
     const [mainImg, setMainImg] = useState("")
-
+const[load,setLoad] = useState("")
 
 
     // console.log(id);
@@ -21,6 +21,7 @@ function Products() {
     const [url, setUrl] = useState(selectProducts.images)
 
     useEffect(() => {
+        setLoad("loader")
         fetch(`https://shop-co-backend-1.onrender.com/api/products/${id}`).then((res) => {
             return res.json()
         })
@@ -29,9 +30,11 @@ function Products() {
                 setSize(data.size)
                 setUrl(data.images)
                 setMainImg(data.images[0])
+            }).finally(()=>{
+                setLoad("")
             })
 
-    }, [])
+    }, [id])
 
     let averageRating;
 
@@ -52,6 +55,7 @@ function Products() {
                         ))
                     }
                     <div className="details__main">
+                        <div className={load}></div>
                         {
                             selectProducts.map((el, index) => (
                                 el._id == id ? (
@@ -62,7 +66,7 @@ function Products() {
                                                 {
                                                     el.images.map((img, index) => (
                                                         <div key={index} className="details-left__inner" onMouseOver={() => setMainImg(img)}>
-                                                            <img className='details-left__img' width={152} height={167} src={img || "https://placehold.co/152x167"} alt="" />
+                                                            <img className='details-left__img' style={mainImg == img ? { border: "1px solid black" } : {}} width={152} height={167} src={img || "https://placehold.co/152x167"} alt="" />
                                                         </div>
                                                     ))
                                                 }
