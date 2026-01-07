@@ -62,7 +62,7 @@ function Comments() {
                     </div>
 
                     {
-                        load && (
+                        load == "loader" && (
                             <div className="loader-container">
                                 <div className={load}></div>
                             </div>

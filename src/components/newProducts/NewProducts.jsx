@@ -16,6 +16,9 @@ function NewProducts({ isPublic }) {
         })
             .then((data) => {
                 setProducts(data)
+                if (data.length <= 1) {
+                    setLoad("not")
+                }
             }).finally(() => {
                 setLoad("")
             })
@@ -35,21 +38,21 @@ function NewProducts({ isPublic }) {
                         <div className="container">
                             <h2 className='new__title'>NEW ARRIVALS</h2>
                             {
-                                load && (
+                                load == "loader"  && (
                                     <div className='loader-box'>
                                         <div className={load}></div>
                                     </div>
                                 )
                             }
                             {
-                                products.length > 1 && (
+                                products.length > 1 ? (
                                     <>
-                                        <ul className="new__list">
+                                        <ul className="new__list" style={products.length <= 3 ? { justifyContent: "center", gap: "50px" } : { justifyContent: "start" }}>
 
                                             {
                                                 products.slice(0, 6).map((el) => (
                                                     <li key={el._id} className="new__item" onClick={() => navigate(`/detail/${el._id}`)
-                                                    
+
                                                     }>
 
                                                         <img width={295} height={298} src={el.images[0]} alt="" />
@@ -108,7 +111,9 @@ function NewProducts({ isPublic }) {
                                                         </div>
                                                     </li>
                                                 ))
+
                                             }
+
                                         </ul>
 
                                         {
@@ -118,6 +123,13 @@ function NewProducts({ isPublic }) {
                                         }
                                     </>
                                 )
+                                    :
+
+                                    (
+                                        <>
+                                           
+                                        </>
+                                    )
                             }
                         </div>
 

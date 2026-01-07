@@ -4,6 +4,15 @@
 
 }
 
+
+.new__status{
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 60px;
+    color: yellow;
+    font-weight: 700;
+}
+
 .new__title {
     text-align: center;
     font-weight: 700;
