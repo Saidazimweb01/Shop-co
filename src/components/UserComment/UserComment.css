@@ -9,12 +9,13 @@
 }
 
 
-.raiting{
+.raiting {
     margin-bottom: 64px;
-    
-   
-    
+
+
+
 }
+
 .raiting__tabs {
     background-color: transparent;
     border: none;
@@ -33,6 +34,11 @@
         border-bottom: 1px solid black;
     }
 
+}
+
+
+.tabs-active {
+    border-bottom: 1px solid rgb(36, 35, 35);
 }
 
 .raiting__filter-box {
@@ -360,68 +366,121 @@
 }
 
 .star-rating {
-  display: flex;
-  gap: 6px;
+    display: flex;
+    gap: 6px;
 }
 
 .star-wrapper {
-  position: relative;
-  width: 28px;
-  height: 28px;
-  font-size: 28px;
-  cursor: pointer;
+    position: relative;
+    width: 28px;
+    height: 28px;
+    font-size: 28px;
+    cursor: pointer;
 }
 
 .star {
-  position: absolute;
-  top: 0;
-  left: 0;
-  color: #ccc;
-  transition: 0.2s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #ccc;
+    transition: 0.2s;
 }
 
 .star.full {
-  clip-path: inset(0 0 0 50%);
+    clip-path: inset(0 0 0 50%);
 }
 
 .star.half {
-  clip-path: inset(0 50% 0 0);
+    clip-path: inset(0 50% 0 0);
 }
 
 .star.active {
-  color: gold;
+    color: gold;
 }
 
 .comment-stars {
-  display: flex;
-  gap: 6px;
+    display: flex;
+    gap: 6px;
 }
 
 .star-wrapper {
-  position: relative;
-  width: 20px;
-  height: 20px;
-  font-size: 20px;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
 }
 
 .star {
-  position: absolute;
-  top: 0;
-  left: 0;
-  color: #ccc;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #ccc;
 }
 
 .star.full {
-  clip-path: inset(0 0 0 50%);
+    clip-path: inset(0 0 0 50%);
 }
 
 .star.half {
-  clip-path: inset(0 50% 0 0);
+    clip-path: inset(0 50% 0 0);
 }
 
 .star.active {
-  color: gold;
+    color: gold;
 }
+
+
+
+.faqs-box {
+    background-color: #dadada;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    border-radius: 30px;
+}
+
+.faqs__top {
+    display: flex;
+    justify-content: space-between;
+    /* margin-bottom: 20px; */
+    align-items: center;
+    gap: 20px;
+
+    & h3 {
+        font-size: 25px;
+    }
+
+    & button {
+        background-color: transparent;
+        border: none;
+        font-size: 35px;
+        cursor: pointer;
+
+        transition: 0.3s;
+
+        &:hover {
+            opacity: 0.5;
+
+        }
+    }
+}
+
+.faqs__bottom {
+    /* display: none; */
+    margin-top: 10px;
+}
+
+.faqs__open {
+    transition: 0.3s;
+}
+
+.open-active {
+
+    transform: rotate(180deg);
+}
+
+
 
 
 
@@ -483,6 +542,50 @@
     .raiting__data {
         font-size: 10px;
         color: #ccc;
+    }
+}
+
+
+@media(max-width:768px) {
+    .details__text {
+        font-size: 14px;
+    }
+}
+
+@media(max-width:425px) {
+    .details__text {
+        font-size: 12px;
+    }
+}
+
+@media(max-width:663px) {
+    .faqs__top h3 {
+        font-size: 20px;
+    }
+
+    .faqs__top button {
+        font-size: 25px;
+    }
+}
+
+@media(max-width:545px) {
+    .faqs__top {
+        flex-direction: column;
+        text-align: center;
+
+        & button {
+            width: 100%;
+            background-color: white;
+            border-radius: 30px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+
+            transform: translate(0);
+
+            &:active{
+                background-color: black;
+            }
+        }
     }
 }
 

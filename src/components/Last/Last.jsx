@@ -153,7 +153,7 @@ function Last() {
 
                     <div className="last__manage">
                         <div className="last__pay__box pay">
-                            <p className='last-pay__text'>Shop.co © 2000-2023, All Rights Reserved</p>
+                            <p className='last-pay__text'>Shop.co © 2000-2026, All Rights Reserved</p>
 
                             <div className="last-pay__box">
                                 <Link to={"#"}>

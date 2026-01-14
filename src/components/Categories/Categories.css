@@ -51,6 +51,7 @@
     border-radius: 20px;
     overflow: hidden;
     cursor: pointer;
+    transition: 0.8s;
 
     & img {
         width: 100%;
@@ -60,11 +61,12 @@
 
     &:hover {
         transform: scale(1.1);
-        transition: all 1s;
+
 
         & img {
             transform: scale(0.90);
-            transition: all 1s;
+    transition: 0.8s;
+
 
 
         }
@@ -95,25 +97,25 @@
     .categories__card {
         justify-content: center;
 
-        & .categories__name{
+        & .categories__name {
             margin-left: 80px;
         }
     }
 
-    .categories__title{
+    .categories__title {
         font-size: 35px;
     }
 }
 
-@media(max-width:479px){
-    .categories__out{
+@media(max-width:479px) {
+    .categories__out {
         padding: 20px;
     }
 }
 
-@media(max-width:380px){
-   .categories__title{
-    font-size: 30px;
-    line-height: 35px;
-   }
+@media(max-width:380px) {
+    .categories__title {
+        font-size: 30px;
+        line-height: 35px;
+    }
 }

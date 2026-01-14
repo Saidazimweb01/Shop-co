@@ -98,9 +98,7 @@ export default function Header({ isPublic, token, setToken }) {
             {
                 isPublic ? (
                     <header className={scrollPublic}>
-                        <div className="main">
-                            Shop-co websitimiz vaqtinchalik beta testda, kamchiliklar uchun uzur!!!
-                        </div>
+
 
                         {
                             isOpen ? (
@@ -158,9 +156,7 @@ export default function Header({ isPublic, token, setToken }) {
                     (
                         <>
                             <header className={scroll}>
-                                <div className="main">
-                                    Shop-co websitimiz vaqtinchalik beta testda, kamchiliklar uchun uzur!!!
-                                </div>
+
 
                                 {
                                     isOpen ? (

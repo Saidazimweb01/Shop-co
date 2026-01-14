@@ -42,8 +42,9 @@ function Comments() {
 
 
 
-
-
+    const ratedComments = products
+        .flatMap(p => p.comments || [])
+        .filter(c => c.userRate >= 4.5)
 
     return (
         <>
@@ -52,7 +53,7 @@ function Comments() {
                     <div className="comments__box">
                         <h2 className=' comments__title'>OUR HAPPY CUSTOMERS</h2>
                         {
-                            load !== "loader" &&  (
+                            load !== "loader" && (
                                 <div className="comments__manage">
                                     <button className='comments__left' onClick={scrollLeft}><img src={left} alt="" /></button>
                                     <button className='comments__right' onClick={scrollRight}><img src={right} alt="" /></button>
@@ -70,7 +71,9 @@ function Comments() {
                     }
                 </div>
 
-                <ul ref={listRef} className="comments__card">
+                <ul ref={listRef} className="comments__card" style={{
+                    justifyContent: ratedComments.length <= 3 ? "center" : "space-between"
+                }}>
 
                     {
                         products.map((el,) => (

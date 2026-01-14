@@ -82,9 +82,7 @@ function Login({ setIsLoadingLog, isLoadingLog, setToken }) {
 
     return (
         <>
-        <div className='main'>
-                            Saytimiz vaqtinchalik beta testda, kamchiliklar uchun uzur!!!
-                        </div>
+
             <div className='login__top'>
                 <Link to={'/'}>Back</Link>
             </div>
