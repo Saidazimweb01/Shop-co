@@ -24,6 +24,14 @@ export default function Header({ isPublic, token, setToken, }) {
     const [login, setLogin] = useState(false)
 
     const { t, i18n } = useTranslation()
+    const [sel, setSel] = useState(
+        localStorage.getItem("lang") || i18n.language
+    )
+
+
+    useEffect(() => {
+        i18n.changeLanguage(sel)
+    }, [i18n, sel])
 
     useEffect(() => {
         if (token) {
@@ -223,7 +231,7 @@ export default function Header({ isPublic, token, setToken, }) {
 
                                             <div className="head__icons">
                                                 <button className="head__search__btn" onClick={() => setSearchOpen(!searchOpen)}><img src={loop} alt="" /></button>
-                                                <select onChange={(e) => i18n.changeLanguage(e.target.value)}>
+                                                <select value={sel} onChange={(e) => setSel(e.target.value)}>
                                                     <option value="uz">UZ</option>
                                                     <option value="ru">RU</option>
                                                     <option value="en">EN</option>

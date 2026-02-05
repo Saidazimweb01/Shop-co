@@ -6,22 +6,29 @@ import ru from "./ru.json"
 import uz from "./uz.json"
 
 
+const saveLang = localStorage.getItem("lang") || "uz"
+
 
 i18n.use(initReactI18next).init({
     resources: {
         en: {
-            translation:  en 
+            translation: en
         },
         uz: {
-            translation:  uz 
+            translation: uz
         },
         ru: {
-            translation:  ru 
+            translation: ru
         },
     },
-    lng: "uz",
+    lng: saveLang,
     fallbackLng: "en",
     interpolation: { escapeValue: false },
+})
+
+
+i18n.on("languageChanged", (lang) => {
+    localStorage.setItem("lang", lang)
 })
 
 export default i18n
