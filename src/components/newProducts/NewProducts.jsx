@@ -3,6 +3,7 @@ import "./NewProducts.css"
 import stars from "../../assets/stars.svg"
 import tShirt from "../../assets/t-shirt.png"
 import { Navigate, useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 function NewProducts({ isPublic }) {
     const [products, setProducts] = useState([])
@@ -28,6 +29,8 @@ function NewProducts({ isPublic }) {
     // console.log(products);
 
 
+    const { t, i18n } = useTranslation()
+
     return (
         <>
 
@@ -36,9 +39,9 @@ function NewProducts({ isPublic }) {
                     <section className='new'>
 
                         <div className="container">
-                            <h2 className='new__title'>NEW ARRIVALS</h2>
+                            <h2 className='new__title'>{t("arrivals.title")}</h2>
                             {
-                                load == "loader"  && (
+                                load == "loader" && (
                                     <div className='loader-box'>
                                         <div className={load}></div>
                                     </div>
@@ -118,7 +121,7 @@ function NewProducts({ isPublic }) {
 
                                         {
                                             products.length > 1 && <div className="new__bottom">
-                                                <button className="new__view" onClick={() => navigate("/products")}>View All</button>
+                                                <button className="new__view" onClick={() => navigate("/products")}>{t("arrivals.all")}</button>
                                             </div>
                                         }
                                     </>
@@ -127,7 +130,7 @@ function NewProducts({ isPublic }) {
 
                                     (
                                         <>
-                                           
+
                                         </>
                                     )
                             }

@@ -11,12 +11,13 @@ import Admin from '../../Pages/Admin/Admin'
 import { jwtDecode } from 'jwt-decode'
 import Detail from '../../Pages/Detail/Detail'
 import Allproducts from '../../Pages/Allproducts/Allproducts'
+import CartProducts from '../../Pages/CartProducts/CartProducts'
 // import ""
 
 function App() {
 
-  const [isLoadingLog, setIsLoadingLog] = useState("Log in")
-  const [isLoadingUp, setIsLoadingUp] = useState("Create account")
+  const [isLoadingLog, setIsLoadingLog] = useState(false);
+  const [isLoadingUp, setIsLoadingUp] = useState(false)
   // const [isDark, setIsDark] = useState(false)
   const [userRole, setUserRole] = useState(null)
   const [token, setToken] = useState(localStorage.getItem("token"))
@@ -60,12 +61,12 @@ function App() {
   // }, [])
 
 
-
+  const [isCart, setIsCart] = useState(false)
 
   return (
     <>
 
-     
+
       <BrowserRouter>
         <Routes>
           <Route path='/login' element={
@@ -94,6 +95,12 @@ function App() {
           <Route path='/products' element={
             <PrivateRoute role={"user"}>
               <Allproducts token={token} setToken={setToken} />
+            </PrivateRoute>
+          } />
+
+          <Route path='/cart' element={
+            <PrivateRoute role={"user"}>
+              <CartProducts token={token} setToken={setToken} />
             </PrivateRoute>
           } />
         </Routes>

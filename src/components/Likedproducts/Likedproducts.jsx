@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import "./Likedproducts.css"
 import tshirt from "../../assets/t-shirt2.png"
 import { useNavigate, useParams } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 function Likedproducts() {
     let { id } = useParams()
@@ -22,11 +23,14 @@ function Likedproducts() {
     }, [id])
     console.log(likeProducts);
 
+
+    const { t } = useTranslation()
+
     return (
         <>
             <section className='like'>
                 <div className="container">
-                    <h2 className='like__title'>You might also like</h2>
+                    <h2 className='like__title'>{t("details.subtitle")}</h2>
                     {
                         !likeProducts.length && (
                             <div className="loader-box">

@@ -1,0 +1,143 @@
+{
+    "public": {
+        "header": "Ro‘yxatdan o‘ting va birinchi buyurtmangiz uchun 20% chegirmaga ega bo‘ling.",
+        "signnow": "Hoziroq ro‘yxatdan o‘ting",
+        "login": "Kirish",
+        "signin": "Ro‘yxatdan o‘tish",
+        "title": "STILINGIZGA MOS KIYIMLARNI TOPING",
+        "text": "Sizning individualligingizni ta’kidlash va didingizga mos kelish uchun sinchkovlik bilan tayyorlangan turli xil kiyimlarimizni ko‘zdan kechiring.",
+        "shop": "Hoziroq xarid qilish",
+        "brand1": "Xalqaro brendlar",
+        "brand2": "Yuqori sifatli mahsulotlar",
+        "brand3": "Mamnun mijozlar"
+    },
+    "login": {
+        "back": "Orqaga",
+        "email": "Email",
+        "password": "Parol",
+        "loginin": "Kirish",
+        "logspin": "Kirish...",
+        "notacc": "Akkauntingiz yo'qmi?"
+    },
+    "register": {
+        "back": "Orqaga",
+        "name": "Ism",
+        "surname": "Familiya",
+        "email": "Email",
+        "password": "Parol",
+        "create": "Akkaunt yaratish",
+        "haveacc": "Akkauntim bor!",
+        "createspin": "Yaratilmoqda..."
+    },
+    "arrivals": {
+        "title": "YANGI KELGANLAR",
+        "all": "Hammasini ko'rish"
+    },
+    "head": {
+        "order": "Birinchi buyurtmangiz uchun 20% chegirma oling.",
+        "shop": "Do'kon",
+        "sale": "Chegirmalar",
+        "new": "Yangi kelganlar",
+        "brands": "Brendlar",
+        "search": "Mahsulotlarni qidirish...",
+        "all": "Hammasi"
+    },
+    "profile": {
+        "close": "Yopish",
+        "name": "Ism:",
+        "surname": "Familiya:",
+        "id": "ID:",
+        "logout": "Chiqish"
+    },
+    "alerts": {
+        "logout": "Haqiqatan ham chiqmoqchimisiz?",
+        "login": "Muvaffaqiyatli!",
+        "create": "Akkaunt yaratildi!"
+    },
+    "errors": {
+        "login": "Xatolik!!! Login yoki parol noto'g'ri",
+        "create": "Bunday akkaunt allaqachon mavjud!"
+    },
+    "categories": {
+        "title": "KIYINISH STILIGA QARAB KO'ZDAN KECHIRING",
+        "casual": "Kundalik",
+        "formal": "Rasmiy",
+        "party": "Bazm uchun",
+        "gym": "Sport zali"
+    },
+    "comments": {
+        "title": "BIZNING MAMNUN MIJOZLARIMIZ"
+    },
+    "email": {
+        "title": "SO'NGGI TAKLIFLARIMIZDAN XABARDOR BO'LING",
+        "adress": "Email manzilingizni kiriting",
+        "btn": "Yangiliklarga obuna bo'lish"
+    },
+    "foot": {
+        "desc": "Bizda sizning stilingizga mos keladigan va kiyishdan faxrlanadigan kiyimlar mavjud. Ayollardan erkaklargacha.",
+        "company": "Kompaniya",
+        "about": "Haqida",
+        "features": "Xususiyatlari",
+        "works": "Ishlar",
+        "career": "Karyera",
+        "help": "Yordam",
+        "support": "Mijozlarni qo'llab-quvvatlash",
+        "delivery": "Yetkazib berish tafsilotlari",
+        "terms": "Foydalanish shartlari",
+        "privacy": "Maxfiylik siyosati",
+        "faq": "FAQ",
+        "account": "Akkaunt",
+        "manage": "Buyurtmalarni boshqarish",
+        "orders": "Buyurtmalar",
+        "payments": "To'lovlar",
+        "resources": "Resurslar",
+        "ebooks": "Bepul elektron kitoblar",
+        "tutorial": "Dasturlash bo'yicha qo'llanma",
+        "blog": "Blog",
+        "youtube": "Youtube pleylist",
+        "rights": "Shop.co © 2000-2026, Barcha huquqlar himoyalangan"
+    },
+    "details": {
+        "home": "BOSH SAHIFA",
+        "color": "Rangni tanlang",
+        "sizes": "O'lchamni tanlang",
+        "title": "Tafsilotlar:",
+        "info": "Ushbu hudi har kungi qulaylik, uslub va ko'p qirralilik uchun mo'ljallangan. Yuqori sifatli, yumshoq paxta aralashmasidan tayyorlangan bo'lib, u barcha fasllar uchun mos keladi va havoni yaxshi o'tkazadi. Ichki qismidagi mayin qatlami teriga yoqimli tegadi va sovuq kunlarda issiqlikni saqlashga yordam beradi. Erkin bichimga ega bo'lgan ushbu hudi uyda, ko'chada yoki yo'lda harakatlanish uchun to'liq qulaylikni ta'minlaydi. Sozlanishi mumkin bo'lgan qalpoq shamol va sovuqdan qo'shimcha himoya qiladi, manjetlar va pastki qismidagi elastik jiyaklar esa mahkam o'tirishini ta'minlaydi. Old qismidagi keng kenguru cho'ntagi qo'llarni isitish yoki kerakli buyumlarni olib yurish uchun ham qulay, ham zamonaviy ko'rinish beradi. Chidamli tikuvlari bir necha bor yuvilgandan keyin ham sifatini yo'qotmaslikka kafolat beradi. Zamonaviy dizayni va o'lmas ko'rinishi bilan ushbu hudi jinsi, jogger yoki shortilar bilan oson uyg'unlashadi va har qanday garderob uchun zarur bo'lakka aylanadi.",
+        "length": "Barcha sharhlar",
+        "latest": "Eng yangi",
+        "oldest": "Eng eskisi",
+        "cart": "Savatga qo'shish",
+        "post": "Sharh yozish",
+        "more": "Batafsil...",
+        "faq_1_q": "Hudi qanday materialdan tayyorlangan?",
+        "faq_1_a": "Ushbu hudi yuqori sifatli paxta aralashmasidan tayyorlangan bo'lib, u yumshoq, havo o'tkazuvchan va chidamli hisoblanadi.",
+        "faq_2_q": "Ushbu hudi barcha fasllar uchun mos keladimi?",
+        "faq_2_a": "Ha, u yil davomida kiyish uchun juda mos: salqin havoda issiq saqlaydi va mo'tadil haroratda qulaylikni ta'minlaydi.",
+        "faq_3_q": "Hudi qanday yuvilishi kerak?",
+        "faq_3_a": "Sifatini saqlab qolish uchun sovuq suvda kir mashinasida yuvishni hamda havoda yoki past haroratda quritishni tavsiya qilamiz.",
+        "faq_4_q": "Yuvilgandan keyin hudi kichrayib (o'tirib) qoladimi?",
+        "faq_4_a": "Minimal darajada kichrayishi mumkin, ammo parvarish qilish ko'rsatmalariga amal qilish asl o'lchamini saqlab qolishga yordam beradi.",
+        "faq_5_q": "Hudi o'lchamlari standartga mosmi?",
+        "faq_5_a": "Ha, hudi o'lchamlari standartga mos keladi. Agar kengroq turishini xohlasangiz, bir o'lcham kattasiga buyurtma berishni tavsiya qilamiz.",
+        "faq_6_q": "Uning cho'ntaklari bormi?",
+        "faq_6_a": "Ha, unda qulaylik va issiqlik uchun keng old kenguru cho'ntagi mavjud.",
+        "faq_7_q": "Ushbu hudi kundalik va tashqarida kiyish uchun mosmi?",
+        "faq_7_a": "Albatta! U kundalik kiyish, mashg'ulotlar, sayohat va yengil faoliyatlar uchun idealdir.",
+        "subtitle": "Sizga yoqishi mumkin",
+        "details": "Mahsulot haqida",
+        "comm": "Izohlar",
+        "f": "Savollar",
+        "loadmore": "Yana ko'proq sharhlarni yuklash",
+        "close": "Yopish",
+        "sub": {
+            "filter": "Filtr",
+            "deff": "Filtr turini tanlang",
+            "positive": "Ijobiylardan boshlash",
+            "negative": "Salbiylardan boshlash",
+            "rating": "Reyting:",
+            "btn": "Izoh qoldirish",
+            "btnspinner": "Yuborilmoqda...",
+            "write": "Izohingizni yozing..."
+        }
+    }
+}

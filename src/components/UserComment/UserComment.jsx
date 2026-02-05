@@ -7,9 +7,11 @@ import status from "../../assets/status.svg"
 import { data, useParams } from 'react-router-dom'
 import Modal from '../Modal/Modal'
 import { jwtDecode } from 'jwt-decode'
+import { useTranslation } from 'react-i18next'
 
 function UserComment() {
 
+    const { t } = useTranslation()
     let { id } = useParams()
 
     const [loadmore, setLoadMore] = useState(6)
@@ -17,7 +19,7 @@ function UserComment() {
     const [selectStars, setSelectStars] = useState(1)
     const [products, setProducts] = useState([])
     const [userComment, setUserComment] = useState("")
-    const [loadingComment, setLoadingComment] = useState("Comment")
+    const [loadingComment, setLoadingComment] = useState(t("details.sub.btn"))
     const [sortedComm, setSortedComm] = useState("Latest")
     const [filteredComm, setFilteredComm] = useState("")
     const [infoId, setInfoId] = useState(null)
@@ -73,11 +75,10 @@ function UserComment() {
 
 
 
-
     function comment(evt) {
         evt.preventDefault()
 
-        setLoadingComment("Commenting...")
+        setLoadingComment(t("details.sub.btnspinner"))
         fetch(`https://shop-co-backend-1.onrender.com/api/products/${id}/comments`, {
             method: "post",
             headers: {
@@ -103,7 +104,7 @@ function UserComment() {
                 setSelectStars(0)
 
             }).finally(() => {
-                setLoadingComment("Comment")
+                setLoadingComment(t("details.sub.btn"))
             })
 
         // console.log(products);
@@ -194,19 +195,17 @@ function UserComment() {
             <section className="raiting">
                 <div className="container">
                     <div className="raiting__tabs-box">
-                        <button className={activeTab == "details" ? "raiting__tabs tabs-active" : "raiting__tabs"} onClick={() => setActiveTab("details")}>Product Details</button>
-                        <button className={activeTab == "raiting" ? "raiting__tabs tabs-active" : "raiting__tabs"} onClick={() => setActiveTab("raiting")}>Rating & Reviews</button>
-                        <button className={activeTab == "faqs" ? "raiting__tabs tabs-active" : "raiting__tabs"} onClick={() => setActiveTab("faqs")}>FAQs</button>
+                        <button className={activeTab == "details" ? "raiting__tabs tabs-active" : "raiting__tabs"} onClick={() => setActiveTab("details")}>{t("details.details")}</button>
+                        <button className={activeTab == "raiting" ? "raiting__tabs tabs-active" : "raiting__tabs"} onClick={() => setActiveTab("raiting")}>{t("details.comm")}</button>
+                        <button className={activeTab == "faqs" ? "raiting__tabs tabs-active" : "raiting__tabs"} onClick={() => setActiveTab("faqs")}>{t("details.f")}</button>
                     </div>
 
                     {
                         activeTab == "details" && (
                             <>
 
-                                <h3 style={{textAlign:"center", marginBottom:"25px", fontSize:"30px"}}>{products.title} Details:</h3>
-                                <p className='details__text' style={{color:"#969696ff", textAlign:"center"}}>This hoodie is designed for everyday comfort, style, and versatility. Made from high-quality, soft cotton-blend fabric, it provides warmth while remaining breathable, making it perfect for all seasons. The inner fleece lining feels smooth against the skin and helps retain heat during colder days. Featuring a relaxed fit, this hoodie allows easy movement and all-day comfort whether you’re at home, outdoors, or on the go.
-
-                                    The adjustable drawstring hood offers extra protection from wind and cold, while the ribbed cuffs and hem ensure a snug and secure fit. A spacious front kangaroo pocket adds both practicality and style, ideal for keeping your hands warm or carrying small essentials. The durable stitching guarantees long-lasting wear even after multiple washes. With its modern design and timeless look, this hoodie pairs effortlessly with jeans, joggers, or shorts, making it a must-have addition to any wardrobe.</p>
+                                <h3 style={{ textAlign: "center", marginBottom: "25px", fontSize: "30px" }}>{products.title} {t("details.title")}</h3>
+                                <p className='details__text' style={{ color: "#969696ff", textAlign: "center" }}>{t("details.info")}</p>
                             </>
                         )
                     }
@@ -216,7 +215,7 @@ function UserComment() {
                             <>
                                 <div className="raiting__filter-box">
                                     <div className="raiting-filter__inner-box">
-                                        <h3 className='raiting__title'>All Reviews</h3>
+                                        <h3 className='raiting__title'>{t("details.length")}</h3>
                                         <span className='raiting__count'>({products?.comments?.length || 0})</span>
                                     </div>
 
@@ -224,11 +223,11 @@ function UserComment() {
                                         <button className='raiting__filter-btn' onClick={() => setIsOpen("filter")}><img src={filter} alt="" /></button>
                                         <select value={sortedComm} onChange={(e) => setSortedComm(e.target.value)} className='raiting__filter-sel'>
                                             <option value="Latest">
-                                                Latest
+                                                {t("details.latest")}
                                             </option>
-                                            <option value="Old">Oldest</option>
+                                            <option value="Old">{t("details.oldest")}</option>
                                         </select>
-                                        <button onClick={() => setIsOpen("comment")}>Write a Review</button>
+                                        <button onClick={() => setIsOpen("comment")}>{t("details.post")}</button>
                                     </div>
                                 </div>
 
@@ -289,7 +288,7 @@ function UserComment() {
                                                                                     setOpenMoreId(null)
                                                                                 }
 
-                                                                                }>More...</button>
+                                                                                }>{t("details.more")}</button>
                                                                             </li>
                                                                         )
                                                                     }
@@ -333,7 +332,7 @@ function UserComment() {
                                                         setLoadMore(prev => prev + 6)
                                                     }
                                                 }}>
-                                                    {loadmore > products.comments.length ? "Close" : "Load More Reviews"}
+                                                    {loadmore > products.comments.length ? t("details.close") : t("details.loadmore")}
                                                 </button>
                                             </div>
                                         </>
@@ -370,11 +369,11 @@ function UserComment() {
                                             ))}
                                         </div>
 
-                                        <p className="rating-text">Rating: {selectStars}</p>
+                                        <p className="rating-text">{t("details.sub.rating")} {selectStars}</p>
 
 
 
-                                        <input maxLength={100} type="text" className='raiting-modal__comment' value={userComment} onChange={(e) => setUserComment(e.target.value)} placeholder='Write in here your comment' />
+                                        <input maxLength={100} type="text" value={userComment} onChange={(e) => setUserComment(e.target.value)} placeholder={t("details.sub.write")} className="raiting-modal__comment" />
                                         <p style={{ color: "#ccc", textAlign: "right" }}>{100 - userComment.length}/100</p>
                                         <button className='raiting-modal__submit'>{loadingComment}</button>
                                     </form>
@@ -382,11 +381,11 @@ function UserComment() {
                                 <Modal isOpen={isOpen == "filter"} setIsOpen={setIsOpen}>
                                     <div className="filter-modal__box">
                                         <select value={filteredComm} onChange={(e) => setFilteredComm(e.target.value)}>
-                                            <option selected disabled>Choose filter</option>
+                                            <option selected disabled>{t("details.sub.deff")}</option>
                                             <option value="az" >A-Z</option>
                                             <option value="za">Z-A</option>
-                                            <option value="4">Start with Positivies</option>
-                                            <option value="3">Start with Negatives</option>
+                                            <option value="4">{t("details.sub.positive")}</option>
+                                            <option value="3">{t("details.sub.negative")}</option>
                                         </select>
                                         <button className='filter-modal__submit' onClick={() => {
                                             setSortedComm(filteredComm)
@@ -394,7 +393,7 @@ function UserComment() {
                                         }
 
 
-                                        }>Filter</button>
+                                        }>{t("details.sub.filter")}</button>
                                     </div>
                                 </Modal>
                             </>

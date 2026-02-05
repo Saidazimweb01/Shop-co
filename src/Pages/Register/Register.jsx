@@ -3,11 +3,12 @@ import "./Register.css"
 import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast, Bounce } from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css"
+import { useTranslation } from 'react-i18next'
 
 function Register({ isLoadingUp, setIsLoadingUp }) {
 
     const [userData, setUserData] = useState({ firstName: "", lastName: "", email: "", password: "" })
-
+    const { t, i18n } = useTranslation()
     const navigate = useNavigate()
     function getUser(e) {
         setUserData({ ...userData, [e.target.name]: e.target.value })
@@ -17,7 +18,7 @@ function Register({ isLoadingUp, setIsLoadingUp }) {
         e.preventDefault()
         console.log(userData);
 
-        setIsLoadingUp("Creating account...")
+        setIsLoadingUp(true)
 
         fetch("https://shop-co-backend-1.onrender.com/api/auth/register", {
             method: "post",
@@ -33,7 +34,7 @@ function Register({ isLoadingUp, setIsLoadingUp }) {
             .then((data) => {
                 if (data.token) {
                     console.log(data);
-                    toast.success('Muvaffaqiyatli account  yaratildi!', {
+                    toast.success(t("alerts.create"), {
                         position: "top-right",
                         autoClose: 5000,
                         hideProgressBar: false,
@@ -47,7 +48,7 @@ function Register({ isLoadingUp, setIsLoadingUp }) {
                     setTimeout(() => navigate("/login"), 1000)
                 }
                 else {
-                    toast.error('Bunday account allaqachon mavjud!', {
+                    toast.error(t("errors.create"), {
                         position: "top-right",
                         autoClose: 5000,
                         hideProgressBar: false,
@@ -62,7 +63,7 @@ function Register({ isLoadingUp, setIsLoadingUp }) {
 
             })
             .finally(() => {
-                setIsLoadingUp("Create account")
+                setIsLoadingUp(false)
             })
     }
 
@@ -70,30 +71,30 @@ function Register({ isLoadingUp, setIsLoadingUp }) {
         <>
 
             <div className='register__top'>
-                <Link to={"/login"}>Back</Link>
+                <Link to={"/login"}>{t("register.back")}</Link>
             </div>
             <div className='register__main'>
                 <div className="register__box">
                     <form onSubmit={handleSubmit} action="#">
                         <label htmlFor="name">
-                            First Name
+                            {t("register.name")}
                         </label>
                         <input type="text" onChange={getUser} name="firstName" id="name" required />
                         <label htmlFor="surname">
-                            Last Name
+                            {t("register.surname")}
                         </label>
                         <input type="text" onChange={getUser} name="lastName" id="surname" required />
                         <label htmlFor="email">
-                            Email
+                            {t("register.email")}
                         </label>
                         <input type="email" onChange={getUser} name="email" id="email" required />
                         <label htmlFor="password">
-                            Password
+                            {t("register.password")}
                         </label>
                         <input type="password" onChange={getUser} name="password" id="password" required />
-                        <button type='submit'>{isLoadingUp}</button>
+                        <button type='submit'>{isLoadingUp ? t("register.createspin") : t("register.create")}</button>
                     </form>
-                    <Link to={"/login"}>I have account!</Link>
+                    <Link to={"/login"}>{t("register.haveacc")}</Link>
                 </div>
             </div>
             <ToastContainer

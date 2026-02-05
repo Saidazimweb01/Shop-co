@@ -1,0 +1,143 @@
+{
+    "public": {
+        "header": "Sign up and get 20% off to your first order.",
+        "signnow": "Sign Up Now",
+        "login": "Login Now",
+        "signin": "Sign up Now",
+        "title": "FIND CLOTHES THAT MATCHES YOUR STYLE",
+        "text": "Browse through our diverse range of meticulously crafted garments, designed to bring out your individuality and cater to your sense of style.",
+        "shop": "Shop Now",
+        "brand1": "International Brands",
+        "brand2": "High-Quality Products",
+        "brand3": "Happy Customers"
+    },
+    "login": {
+        "back": "Back",
+        "email": "Email",
+        "password": "Password",
+        "loginin": "Log in",
+        "logspin": "Log in...",
+        "notacc": "Don't have account?"
+    },
+    "register": {
+        "back": "Back",
+        "name": "First Name",
+        "surname": "First Name",
+        "email": "Email",
+        "password": "Password",
+        "create": "Create account",
+        "haveacc": "I have account!",
+        "createspin": "Creating..."
+    },
+    "arrivals": {
+        "title": "NEW ARRIVALS",
+        "all": "View All"
+    },
+    "head": {
+        "order": "Get 20% off to your first order.",
+        "shop": "Shop",
+        "sale": "On Sale",
+        "new": "New Arrivals",
+        "brands": "Brands",
+        "search": "Search for products...",
+        "all": "All"
+    },
+    "profile": {
+        "close": "Close",
+        "name": "First Name:",
+        "surname": "Last Name:",
+        "id": "Id:",
+        "logout": "Log out"
+    },
+    "alerts": {
+        "logout": "Are you sure log out?",
+        "login": "Correct!",
+        "create": "Created account!"
+    },
+    "errors": {
+        "login": "Error!!! login or password are incorrect",
+        "create": "This account already have!"
+    },
+    "categories": {
+        "title": "BROWSE BY dress STYLE",
+        "casual": "Casual",
+        "formal": "Formal",
+        "party": "Party",
+        "gym": "Gym"
+    },
+    "comments": {
+        "title": "OUR HAPPY CUSTOMERS"
+    },
+    "email": {
+        "title": "STAY UPTO DATE ABOUT OUR LATEST OFFERS",
+        "adress": "Enter your email adress",
+        "btn": "Subscribe to Newsletter"
+    },
+    "foot": {
+        "desc": "We have clothes that suits your style and which you’re proud to wear. From women to men.",
+        "company": "Company",
+        "about": "About",
+        "features": "Features",
+        "works": "Works",
+        "career": "Career",
+        "help": "Help",
+        "support": "Customer Support",
+        "delivery": "Delivery Details",
+        "terms": "Terms & Conditions",
+        "privacy": "Privacy Policy",
+        "faq": "FAQ",
+        "account": "Account",
+        "manage": "Manage Deliveries",
+        "orders": "Orders",
+        "payments": "Payments",
+        "resources": "Resources",
+        "ebooks": "Free eBooks",
+        "tutorial": "Development Tutorial",
+        "blog": "How to - Blog",
+        "youtube": "Youtube Playlist",
+        "rights": "Shop.co © 2000-2026, All Rights Reserved"
+    },
+    "details": {
+        "home": "HOME",
+        "color": "Select Colors",
+        "sizes": "Choose Size",
+        "title": "Details:",
+        "info": "This hoodie is designed for everyday comfort, style, and versatility. Made from high-quality, soft cotton-blend fabric, it provides warmth while remaining breathable, making it perfect for all seasons. The inner fleece lining feels smooth against the skin and helps retain heat during colder days. Featuring a relaxed fit, this hoodie allows easy movement and all-day comfort whether you’re at home, outdoors, or on the go. The adjustable drawstring hood offers extra protection from wind and cold, while the ribbed cuffs and hem ensure a snug and secure fit. A spacious front kangaroo pocket adds both practicality and style, ideal for keeping your hands warm or carrying small essentials. The durable stitching guarantees long-lasting wear even after multiple washes. With its modern design and timeless look, this hoodie pairs effortlessly with jeans, joggers, or shorts, making it a must-have addition to any wardrobe.",
+        "length": "All Reviews",
+        "latest": "Latest",
+        "oldest": "Oldest",
+        "cart": "Add to Cart",
+        "post": "Write a Review",
+        "more": "More...",
+        "faq_1_q": "What material is the hoodie made from?",
+        "faq_1_a": "This hoodie is made from a high-quality cotton-blend fabric that is soft, breathable, and durable.",
+        "faq_2_q": "Is this hoodie suitable for all seasons?",
+        "faq_2_a": "Yes, it is perfect for year-round wear, providing warmth in cooler weather while remaining comfortable in mild temperatures.",
+        "faq_3_q": "How should I wash the hoodie?",
+        "faq_3_a": "We recommend machine washing in cold water and air drying or tumble drying on low heat to maintain quality.",
+        "faq_4_q": "Does the hoodie shrink after washing?",
+        "faq_4_a": "Minimal shrinkage may occur, but following the care instructions will help preserve the original fit.",
+        "faq_5_q": "Is the hoodie true to size?",
+        "faq_5_a": "Yes, the hoodie is designed to fit true to size. For a looser fit, consider ordering one size up.",
+        "faq_6_q": "Does it have pockets?",
+        "faq_6_a": "Yes, it features a spacious front kangaroo pocket for convenience and warmth.",
+        "faq_7_q": "Is this hoodie suitable for casual and outdoor use?",
+        "faq_7_a": "Absolutely! It’s ideal for casual wear, workouts, travel, and light outdoor activities.",
+        "subtitle": "You might also like",
+        "details": "Product Details",
+        "comm": "Product Comments",
+        "f": "FAQs",
+        "loadmore": "Load More Reviews",
+        "close": "Close",
+        "sub": {
+            "filter": "Filter",
+            "deff": "Choose type of filter",
+            "positive": "Start with Positivies",
+            "negative": "Start with Negatives",
+            "rating": "Rating:",
+            "btn": "Comment",
+            "btnspinner": "Commenting...",
+            "write": "Write your comment..."
+        }
+    }
+}

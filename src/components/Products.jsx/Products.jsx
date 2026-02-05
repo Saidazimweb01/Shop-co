@@ -5,6 +5,7 @@ import img1 from "../../assets/product-1.svg"
 import img2 from "../../assets/product-2.png"
 import img3 from "../../assets/product-3.png"
 import star from "../../assets/stars.svg"
+import { useTranslation } from 'react-i18next'
 
 function Products() {
     let { id } = useParams()
@@ -12,7 +13,7 @@ function Products() {
     const [size, setSize] = useState([])
     const ALL_SIZES = ["small", "medium", "large", "x-large"];
     const [mainImg, setMainImg] = useState("")
-const[load,setLoad] = useState("")
+    const [load, setLoad] = useState("")
 
 
     // console.log(id);
@@ -30,7 +31,7 @@ const[load,setLoad] = useState("")
                 setSize(data.size)
                 setUrl(data.images)
                 setMainImg(data.images[0])
-            }).finally(()=>{
+            }).finally(() => {
                 setLoad("")
             })
 
@@ -41,6 +42,7 @@ const[load,setLoad] = useState("")
 
     // console.log(selectProducts);
 
+    const { t } = useTranslation()
 
     return (
         <>
@@ -49,7 +51,7 @@ const[load,setLoad] = useState("")
                     {
                         selectProducts.map((el) => (
                             <div key={el.Id} className="details__link-box">
-                                <Link to={"/user"}>Home &gt;</Link>
+                                <Link to={"/user"}>{t("details.home")} &gt;</Link>
                                 <Link to={"#"}>{el.title}</Link>
                             </div>
                         ))
@@ -132,14 +134,14 @@ const[load,setLoad] = useState("")
                                             </div>
                                             <p className='details-right__info'>This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.</p>
                                             <hr />
-                                            <p className='details-right__color-title'>Select Colors</p>
+                                            <p className='details-right__color-title'>{t("details.color")}</p>
                                             <div className="details-right__color-box">
                                                 <input type="radio" className='details-right__colors' />
                                                 <input type="radio" className='details-right__colors' />
                                                 <input type="radio" className='details-right__colors' />
                                             </div>
                                             <hr />
-                                            <p className='details-right__size-title'>Choose Size</p>
+                                            <p className='details-right__size-title'>{t("details.sizes")}</p>
                                             {
 
 
@@ -165,7 +167,7 @@ const[load,setLoad] = useState("")
                                                 </div>
 
                                                 <button className="details-right__buy-btn">
-                                                    Add to Cart
+                                                    {t("details.cart")}
                                                 </button>
                                             </div>
                                         </div>

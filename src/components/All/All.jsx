@@ -1,17 +1,19 @@
 import React, { useEffect, useReducer, useState } from 'react'
 import "./All.css"
-import { Link } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import filterr from "../../assets/filter2.svg"
 import next from "../../assets/next.svg"
 import tshirt from "../../assets/t-shirt.png"
 import isopen from "../../assets/isopen.svg"
 
 const initialState = {
-    loading: false,
+    loading: "loader",
     products: [],
     isOpen: false,
     price: false,
-    colors: false
+    colors: false,
+    size: false,
+    style: false
 
 }
 
@@ -19,17 +21,21 @@ function reducer(state, action) {
     switch (action.type) {
         case "start":
             return {
-                ...state, loading: true,
+                ...state, loading: "loader",
 
             }
         case "end":
-            return { ...state, loading: false, products: action.payload }
+            return { ...state, loading: "", products: action.payload }
         case "filterOpen":
             return { ...state, filter: !state.filter }
         case "priceOpen":
             return { ...state, price: !state.price }
         case "colorsOpen":
             return { ...state, colors: !state.colors }
+        case "sizeOpen":
+            return { ...state, size: !state.size }
+        case "styleOpen":
+            return { ...state, style: !state.style }
         default:
             throw new Error("Bizda bunday action yo'q")
 
@@ -39,7 +45,7 @@ function reducer(state, action) {
 function All() {
 
     const [state, dispach] = useReducer(reducer, initialState)
-
+    const navigate = useNavigate()
     // const [products, setProducts] = useState([])
 
 
@@ -110,7 +116,7 @@ function All() {
                                         </div>
 
 
-                                        <div className="all-left__colors-box" style={state.colors ? { paddingBottom: "20px" } : {paddingBottom:"0"}} >
+                                        <div className="all-left__colors-box" style={state.colors ? { paddingBottom: "20px" } : { paddingBottom: "0" }} >
                                             <div className="all-left__colors-inner">
                                                 <h2 className='all-left-colors__title'>Colors</h2>
                                                 <button className={state.colors ? "all-left__open-btn colors-active" : "all-left__open-btn"} onClick={() => dispach({ type: "colorsOpen" })}><img src={isopen} alt="" /></button>
@@ -133,41 +139,49 @@ function All() {
                                             }
                                         </div>
 
-                                        <div className="all-left__size-box">
+                                        <div style={state.size ? { paddingBottom: "20px" } : { paddingBottom: "0" }} className="all-left__size-box">
                                             <div className="all-left__size__inner">
                                                 <h2 className='all-left__size-title'>Size</h2>
-                                                <button className='all-left__open-btn'><img src={isopen} alt="" /></button>
+                                                <button className={state.size ? "all-left__open-btn size-active" : "all-left__open-btn"} onClick={() => dispach({ type: "sizeOpen" })}><img src={isopen} alt="" /></button>
                                             </div>
-                                            <div className="all-left__size-btn">
-                                                <button className='all-left__sizes'>
-                                                    Small
-                                                </button>
-                                                <button className='all-left__sizes'>
-                                                    Medium
-                                                </button>
-                                                <button className='all-left__sizes'>
-                                                    Large
-                                                </button>
-                                                <button className='all-left__sizes'>
-                                                    X-Large
-                                                </button>
-                                            </div>
+                                            {
+                                                state.size && (
+                                                    <div className="all-left__size-btn">
+                                                        <button className='all-left__sizes'>
+                                                            Small
+                                                        </button>
+                                                        <button className='all-left__sizes'>
+                                                            Medium
+                                                        </button>
+                                                        <button className='all-left__sizes'>
+                                                            Large
+                                                        </button>
+                                                        <button className='all-left__sizes'>
+                                                            X-Large
+                                                        </button>
+                                                    </div>
+                                                )
+                                            }
                                         </div>
 
-                                        <div className="all-left__category-box">
+                                        <div style={state.style ? { paddingBottom: "20px" } : { paddingBottom: "0" }} className="all-left__category-box">
                                             <div className="all-left__category-inner">
                                                 <h2 className='all-left__category-title'>
                                                     Dress Style
                                                 </h2>
-                                                <button className="all-left__open-btn"><img src={isopen} alt="" /></button>
+                                                <button className={state.style ? "all-left__open-btn size-active" : "all-left__open-btn"} onClick={() => dispach({ type: "styleOpen" })}><img src={isopen} alt="" /></button>
 
                                             </div>
-                                            <div className="all-left__categories">
-                                                <button className="all-left__category">Casual <div><img src={next} alt="" /></div></button>
-                                                <button className="all-left__category">Formal <div><img src={next} alt="" /></div></button>
-                                                <button className="all-left__category">Party <div><img src={next} alt="" /></div></button>
-                                                <button className="all-left__category">Gym <div><img src={next} alt="" /></div></button>
-                                            </div>
+                                            {
+                                                state.style && (
+                                                    <div className="all-left__categories">
+                                                        <button className="all-left__category">Casual <div><img src={next} alt="" /></div></button>
+                                                        <button className="all-left__category">Formal <div><img src={next} alt="" /></div></button>
+                                                        <button className="all-left__category">Party <div><img src={next} alt="" /></div></button>
+                                                        <button className="all-left__category">Gym <div><img src={next} alt="" /></div></button>
+                                                    </div>
+                                                )
+                                            }
 
 
                                         </div>
@@ -180,6 +194,8 @@ function All() {
                             }
                         </div>
                         <div className="all__right">
+
+
                             <div className="all-right__title-box">
                                 <h3 className='all-right__title'>Casual</h3>
                                 <div className="all-right__inner-box">
@@ -190,10 +206,20 @@ function All() {
                                 </div>
                             </div>
 
+                            {
+                                state.loading == "loader" && (
+                                    <div className="loader-box">
+                                        <div className={state.loading}>
+
+                                        </div>
+                                    </div>
+                                )
+                            }
+
                             <ul className="all-right__card">
                                 {
                                     state.products.slice(0, 9).map((el) => (
-                                        <li key={el._id} className="all-right__item">
+                                        <li onClick={() => navigate(`/detail/${el._id}`)} key={el._id} className="all-right__item">
                                             <img width={295} height={298} src={el.images[0]} alt={el.title} />
                                             <h3 className='all-right__name'>{el.title}</h3>
                                             <div className="new__raiting__box">

@@ -5,6 +5,7 @@ import left from "../../assets/left.svg"
 import status from "../../assets/status.svg"
 import fiveStar from "../../assets/fiveStar.svg"
 import { jwtDecode } from 'jwt-decode'
+import { useTranslation } from 'react-i18next'
 
 function Comments() {
     const listRef = useRef(null)
@@ -40,6 +41,8 @@ function Comments() {
         })
     }
 
+    const { t } = useTranslation()
+
 
 
     const ratedComments = products
@@ -51,7 +54,7 @@ function Comments() {
             <section className="comments">
                 <div className="container">
                     <div className="comments__box">
-                        <h2 className=' comments__title'>OUR HAPPY CUSTOMERS</h2>
+                        <h2 className=' comments__title'>{t("comments.title")}</h2>
                         {
                             load !== "loader" && (
                                 <div className="comments__manage">

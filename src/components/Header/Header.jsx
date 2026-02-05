@@ -8,9 +8,10 @@ import basket from "../../assets/basket.svg"
 import { jwtDecode } from "jwt-decode"
 import burger from "../../assets/burger.svg"
 import loop from "../../assets/head-loop.svg"
+import { useTranslation } from "react-i18next"
 
 
-export default function Header({ isPublic, token, setToken }) {
+export default function Header({ isPublic, token, setToken, }) {
     const [isOpen, setIsOpen] = useState(true)
     const navigate = useNavigate()
     const [userInfo, setUserInfo] = useState([])
@@ -21,6 +22,8 @@ export default function Header({ isPublic, token, setToken }) {
     const [isBurger, setIsBurger] = useState(false)
     const [profile, setProfile] = useState(false)
     const [login, setLogin] = useState(false)
+
+    const { t, i18n } = useTranslation()
 
     useEffect(() => {
         if (token) {
@@ -84,7 +87,7 @@ export default function Header({ isPublic, token, setToken }) {
 
 
     function logOut() {
-        let isSure = confirm("Siz account dan chiqmoqchimisiz?")
+        let isSure = confirm(`${t("alerts.logout")}`)
 
         if (isSure) {
             localStorage.removeItem("token")
@@ -105,7 +108,7 @@ export default function Header({ isPublic, token, setToken }) {
                                 <div className="cite-header__top">
                                     <div className="container">
                                         <div className="cite-header__top__box">
-                                            <p>Sign up and get 20% off to your first order. <Link to={"/register"}>Sign Up Now</Link></p>
+                                            <p>{t("public.header")} <Link to={"/register"}>{t("public.signnow")}</Link></p>
                                             <button onClick={() => setIsOpen(false)}><img src={closeIcone} alt="close button" /></button>
                                         </div>
                                     </div>
@@ -126,8 +129,8 @@ export default function Header({ isPublic, token, setToken }) {
                                     </Link>
 
                                     <div className="cite-header__sign__box">
-                                        <Link to={"/login"}>Login Now</Link>
-                                        <Link to={"/register"}>Sign up Now</Link>
+                                        <Link to={"/login"}>{t("public.login")}</Link>
+                                        <Link to={"/register"}>{t("public.signin")}</Link>
                                     </div>
                                 </div>
 
@@ -137,12 +140,12 @@ export default function Header({ isPublic, token, setToken }) {
                                     <div className={isOpen ? "cite-header__login-box" : "cite-header__login-box without-login"}>
                                         <ul className="cite-header__list">
                                             <li className="cite-header__item">
-                                                <Link to={"/login"}>Login Now</Link>
+                                                <Link to={"/login"}>{t("public.login")}</Link>
                                                 {/* <Link to={"/register"}>Sign up Now</Link> */}
                                             </li>
                                             <li className="cite-header__item">
                                                 {/* <Link to={"/login"}>Login Now</Link>     */}
-                                                <Link to={"/register"}>Sign up Now</Link>
+                                                <Link to={"/register"}>{t("public.signin")}</Link>
                                                 {/* <Link to={"/register"}>Sign up Now</Link> */}
                                             </li>
                                         </ul>
@@ -162,8 +165,9 @@ export default function Header({ isPublic, token, setToken }) {
                                     isOpen ? (
                                         <div className="cite-header__top">
                                             <div className="container">
+
                                                 <div className={isPublic ? "cite-header__top__box" : "head__top__box"}>
-                                                    <p className=""> Get 20% off to your first order.</p>
+                                                    <p className="">{t("head.order")}</p>
                                                     <button onClick={() => setIsOpen(false)}><img src={closeIcone} alt="close button" /></button>
                                                 </div>
                                             </div>
@@ -194,32 +198,37 @@ export default function Header({ isPublic, token, setToken }) {
                                             <ul className="head__list">
                                                 <li className="head__item">
                                                     <select className="head__select">
-                                                        <option value="All " >Shop</option>
-                                                        <option value="All">All</option>
+                                                        <option value="All " >{t("head.shop")}</option>
+                                                        <option value="All">{t("head.all")}</option>
                                                     </select>
                                                 </li>
                                                 <li className="head__item">
-                                                    <Link to={"#"} >On Sale</Link>
+                                                    <Link to={"#"} >{t("head.sale")}</Link>
                                                 </li>
                                                 <li className="head__item">
-                                                    <Link to={"#"}>New Arrivals</Link>
+                                                    <Link to={"#"}>{t("head.new")}</Link>
                                                 </li>
                                                 <li className="head__item">
-                                                    <Link to={"#"}>Brands</Link>
+                                                    <Link to={"#"}>{t("head.brands")}</Link>
                                                 </li>
                                             </ul>
                                             <div className="head__search__box">
-                                                <input type="search" placeholder="Search for products..." className="head__search" />
+                                                <input type="search" placeholder={t("head.search")} className="head__search" />
                                             </div>
                                             {
                                                 searchOpen && <div className="head-search__box">
-                                                    <input type="search" placeholder="Search for products..." className="head-search" />
+                                                    <input type="search" placeholder={t("head.order")} className="head-search" />
                                                 </div>
                                             }
 
                                             <div className="head__icons">
                                                 <button className="head__search__btn" onClick={() => setSearchOpen(!searchOpen)}><img src={loop} alt="" /></button>
-                                                <button><img width={24} height={24} src={basket} alt="" /></button>
+                                                <select onChange={(e) => i18n.changeLanguage(e.target.value)}>
+                                                    <option value="uz">UZ</option>
+                                                    <option value="ru">RU</option>
+                                                    <option value="en">EN</option>
+                                                </select>
+                                                <button onClick={() => navigate("/cart")}><img width={24} height={24} src={basket} alt="" /></button>
                                                 <button onClick={() => setProfile(isBurger ? false : !profile)}><img width={24} height={24} src={profilee} alt="" /></button>
 
                                             </div>
@@ -256,18 +265,18 @@ export default function Header({ isPublic, token, setToken }) {
                                             <div className={isOpen ? "head__profile " : "head__profile without"}>
 
                                                 <div className="head__close__box ">
-                                                    <button className="head__close" onClick={() => setProfile(false)}>Close</button>
+                                                    <button className="head__close" onClick={() => setProfile(false)}>{t("profile.close")}</button>
 
                                                 </div>
                                                 <div className="head-profile__box">
-                                                    <h3 className="head__firstName">First Name: <span>{userInfo.firstName}</span></h3>
+                                                    <h3 className="head__firstName">{t("profile.name")} <span>{userInfo.firstName}</span></h3>
 
 
-                                                    <h3>Last Name: <span>{userInfo.lastName}</span></h3>
-                                                    <h3>Id: <span>{userInfo.id}</span></h3>
+                                                    <h3>{t("profile.surname")} <span>{userInfo.lastName}</span></h3>
+                                                    <h3>{t("profile.id")} <span>{userInfo.id}</span></h3>
                                                 </div>
                                                 <div className="head-profile__btn-box">
-                                                    <button className="head__logout" onClick={() => logOut()}>Log out</button>
+                                                    <button className="head__logout" onClick={() => logOut()}>{t("profile.logout")}</button>
                                                 </div>
                                             </div>
                                         )

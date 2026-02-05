@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast, Bounce } from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css"
 import "./Login.css"
+import { useTranslation } from 'react-i18next'
 
 function Login({ setIsLoadingLog, isLoadingLog, setToken }) {
 
@@ -19,7 +20,7 @@ function Login({ setIsLoadingLog, isLoadingLog, setToken }) {
         e.preventDefault()
         console.log(userData);
 
-        setIsLoadingLog("Log in...")
+        setIsLoadingLog(true);
         fetch("https://shop-co-backend-1.onrender.com/api/auth/login", {
             method: "post",
             headers: {
@@ -38,7 +39,7 @@ function Login({ setIsLoadingLog, isLoadingLog, setToken }) {
                     localStorage.setItem("token", data.token)
                     setToken(data.token)
                     console.log(data);
-                    toast.success('Muvaffaqiyatli accountga kirildi!', {
+                    toast.success(t("alerts.login"), {
                         position: "top-right",
                         autoClose: 5000,
                         hideProgressBar: false,
@@ -52,7 +53,7 @@ function Login({ setIsLoadingLog, isLoadingLog, setToken }) {
                     setTimeout(() => navigate(`/${data.user.role}`), 1000);
                 }
                 else {
-                    toast.error('Login yoki parol Xato!!!', {
+                    toast.error(t("errors.login"), {
                         position: "top-right",
                         autoClose: 5000,
                         hideProgressBar: false,
@@ -68,7 +69,7 @@ function Login({ setIsLoadingLog, isLoadingLog, setToken }) {
 
             })
             .finally(() => {
-                setIsLoadingLog("Log in")
+                setIsLoadingLog(false);
             }).catch((err) => {
                 console.log(err);
 
@@ -79,23 +80,25 @@ function Login({ setIsLoadingLog, isLoadingLog, setToken }) {
 
     }
 
+    const { t, i18n } = useTranslation()
+
 
     return (
         <>
 
             <div className='login__top'>
-                <Link to={'/'}>Back</Link>
+                <Link to={'/'}>{t("login.back")}</Link>
             </div>
             <div className="login__main">
                 <div className='login__box'>
                     <form onSubmit={login} action="#">
-                        <label htmlFor="email">Email</label>
+                        <label htmlFor="email">{t("login.email")}</label>
                         <input name='email' type="email" required className='login__email' onChange={getUser} id='email' />
-                        <label htmlFor="password">Password</label>
+                        <label htmlFor="password">{t("login.password")}</label>
                         <input name='password' type="password" required className='login__password' onChange={getUser} id="password" />
-                        <button type='submit' className='login__submit' >{isLoadingLog}</button>
+                        <button type='submit' className='login__submit' >{isLoadingLog ? t("login.logspin") : t("login.loginin")}</button>
                     </form>
-                    <Link to={"/register"}>Don't have account?</Link>
+                    <Link to={"/register"}>{t("login.notacc")}</Link>
                 </div>
             </div>
             <ToastContainer
