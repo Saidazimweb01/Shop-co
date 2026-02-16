@@ -6,7 +6,7 @@ import ru from "./ru.json"
 import uz from "./uz.json"
 
 
-const saveLang = localStorage.getItem("lang") || "uz"
+const saveLang = localStorage.getItem("lang") || "en"
 
 
 i18n.use(initReactI18next).init({
